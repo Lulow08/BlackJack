@@ -6,16 +6,15 @@
 class Mazo {
     public:
         Mazo();
-        // Reparte la siguiente carta del mazo
-        Carta darCarta(); // TODO: convertir en getter y mover responsabilidad a crupier
+        std::vector<Carta> cartasEnMazo;
 
         // Getter
 
+        int getIndiceCartaActual() const { return indiceCartaActual; }
         int getCartasRestantes() const;
     
     private:
-        std::vector<Carta> cartas;
-        size_t indiceCartaActual;
+        size_t indiceCartaActual{};
         void generarMazo();
         void barajar();
 };
