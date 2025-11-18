@@ -12,6 +12,8 @@ class Mazo {
 
         int getIndiceCartaActual() const { return indiceCartaActual; }
         int getCartasRestantes() const;
+
+        void avanzarIndice() { indiceCartaActual++; }
     
     private:
         size_t indiceCartaActual{};

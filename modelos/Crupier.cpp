@@ -14,6 +14,7 @@ void Crupier::empezarNuevaRonda(Mazo& mazo, Jugador& jugador) {
 
 Carta Crupier::getSiguienteCarta(Mazo& mazo) {
     return mazo.cartasEnMazo[mazo.getIndiceCartaActual()];
+    mazo.avanzarIndice();
 }
 
 void Crupier::darCartaAJugador(Jugador& jugador, Mazo& mazo, size_t cantidad) {
