@@ -41,10 +41,8 @@ class Vista {
         std::vector<std::string> colaJugadorCartaSuperior;
         std::vector<std::string> colaJugadorCartaMedio;
         std::vector<std::string> colaJugadorCartaInferior;
-        std::vector<std::string> colaJugadorCarta;
 
         std::vector<std::string> colaCrupierCartaSuperior;
         std::vector<std::string> colaCrupierCartaMedio;
         std::vector<std::string> colaCrupierCartaInferior;
-        std::vector<std::string> colaCrupierCarta;
 };
