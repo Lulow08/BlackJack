@@ -6,7 +6,7 @@ Vista::Vista() {}
 
 void Vista::mostrarTitulo() const {
     limpiarPantalla();
-    std::cout << AMARILLO << R"(
+    std::cout << colAmarillo << R"(
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║                                                                              ║
 ║ ██████╗ ██╗      █████╗  ██████╗██╗  ██╗         ██╗ █████╗  ██████╗██╗  ██╗ ║
@@ -15,9 +15,9 @@ void Vista::mostrarTitulo() const {
 ║ ██╔══██╗██║     ██╔══██║██║     ██╔═██╗     ██   ██║██╔══██║██║     ██╔═██╗  ║
 ║ ██████╔╝███████╗██║  ██║╚██████╗██║  ██╗    ╚█████╔╝██║  ██║╚██████╗██║  ██╗ ║
 ║ ╚═════╝ ╚══════╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝     ╚════╝ ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝ ║
-║                                                                              ║                                ║
+║                                                                              ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
-    )" << RESET << std::endl;
+    )" << colReset << std::endl;
 }
 
 void Vista::limpiarPantalla() const {
@@ -33,18 +33,17 @@ void Vista::mostrarTexto(const std::string& texto) const {
 }
 
 void Vista::añadirCartaACola(
-    std::vector<std::string>& colSup,
-    std::vector<std::string>& colMed,
-    std::vector<std::string>& colInf,
+    Mano mano,
     const std::string& valor,
     const std::string& palo,
-    bool esRojo)
+    Color colorEnum)
 {
-    std::string color = esRojo ? ROJO : NEGRO;
+    std::vector<std::string> (&cola)[4] = (mano == JUGADOR) ? colaCartasJugador : colaCartasCrupier;
+    std::string color = (colorEnum == NEGRO) ? colNegro : colRojo;
 
-    colSup.push_back("╭" + color + valor + palo + RESET + "──╮ ");
-    colMed.push_back("│    │ ");
-    colInf.push_back("╰──" + color + valor + palo + RESET + "╯ ");
+    cola[SUPERIOR].push_back("╭" + color + valor + palo + colReset + "──╮ ");
+    cola[MEDIO].push_back("│    │ ");
+    cola[INFERIOR].push_back("╰──" + color + valor + palo + colReset + "╯ ");
 }
 
 void Vista::imprimirCola(const std::vector<std::string>& cola) {
@@ -55,31 +54,19 @@ void Vista::imprimirCola(const std::vector<std::string>& cola) {
 }
 
 void Vista::limpiarColas() {
-    colaJugadorCartaSuperior.clear();
-    colaJugadorCartaMedio.clear();
-    colaJugadorCartaInferior.clear();
-
-    colaCrupierCartaSuperior.clear();
-    colaCrupierCartaMedio.clear();
-    colaCrupierCartaInferior.clear();
+    for (size_t i = 0; i < 3; i++) {
+        colaCartasJugador[i].clear();
+        colaCartasCrupier[i].clear();
+    }
 }
 
-void Vista::imprimirMano(
-    const std::vector<std::string>& sup,
-    const std::vector<std::string>& med,
-    const std::vector<std::string>& inf)
+void Vista::imprimirMano(Mano mano)
 {
-    imprimirCola(sup);
-    imprimirCola(med);
-    imprimirCola(med);
-    imprimirCola(med);
-    imprimirCola(inf);
-}
+    std::vector<std::string> (&cola)[4] = (mano == JUGADOR) ? colaCartasJugador : colaCartasCrupier;
 
-void Vista::actualizarCartasJugador() {
-    imprimirMano(colaJugadorCartaSuperior, colaJugadorCartaMedio, colaJugadorCartaInferior);
-}
-
-void Vista::actualizarCartasCrupier() {
-    imprimirMano(colaCrupierCartaSuperior, colaCrupierCartaMedio, colaCrupierCartaInferior);
+    imprimirCola(cola[SUPERIOR]);
+    imprimirCola(cola[MEDIO]);
+    imprimirCola(cola[MEDIO]);
+    imprimirCola(cola[MEDIO]);
+    imprimirCola(cola[INFERIOR]);
 }
