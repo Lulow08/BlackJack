@@ -32,15 +32,18 @@ void Vista::mostrarTexto(const std::string& texto) const {
     std::cout << texto << "\n";
 }
 
-void Vista::añadirCartaACola(Mano mano, const std::string& valor, const std::string& palo, Color colorEnum)
-{
-    std::vector<std::string> (&cola)[4] = (mano == JUGADOR) ? colaCartasJugador : colaCartasCrupier;
+void Vista::añadirCartaACola(Mano mano, const std::string& valor, const std::string& palo, Color colorEnum) {
+
+    std::vector<std::string> (&cola)[3] = (mano == JUGADOR) ? colaCartasJugador : colaCartasCrupier;
     std::string color = (colorEnum == NEGRO) ? colNegro : colRojo;
 
-    if (cola[SUPERIOR].empty()) {
-        // Ajustar el tamaño de los bordes si el valor es de 2 digitos (valor 10)
-        std::string bordeSup = (valor.length() > 1) ? "─╮" : "──╮";
-        std::string bordeInf = (valor.length() > 1) ? "╰─" : "╰──";
+    bool esDobleDigito = (valor.length() > 1);
+    bool esPrimeraCarta = esColaVacia(cola);
+
+    if (esPrimeraCarta) {
+        // Ajustar el tamaño de los bordes si el valor es de 2 digitos (valor de 10)
+        std::string bordeSup = esDobleDigito ? "─╮" : "──╮";
+        std::string bordeInf = esDobleDigito ? "╰─" : "╰──";
 
         cola[SUPERIOR].push_back("╭" + color + valor + palo + colReset + bordeSup);
         cola[MEDIO].push_back("│    │");
@@ -48,7 +51,7 @@ void Vista::añadirCartaACola(Mano mano, const std::string& valor, const std::st
     }
 
     else {
-        std::string bordeInf = (valor.length() > 1) ? "" : "╶";
+        std::string bordeInf = esDobleDigito ? "" : "╶";
 
         cola[SUPERIOR].push_back("╶──╮");
         cola[MEDIO].push_back("   │");
@@ -56,11 +59,15 @@ void Vista::añadirCartaACola(Mano mano, const std::string& valor, const std::st
     }
 }
 
-void Vista::imprimirCola(const std::vector<std::string>& cola) {
+void Vista::imprimirCola(const std::vector<std::string>& cola) const {
     for (size_t i = 0; i < cola.size(); i++) {
         std::cout << cola[i];
     }
     std::cout << "\n";
+}
+
+bool Vista::esColaVacia(std::vector<std::string> (&cola)[3]) const {
+    return cola[SUPERIOR].empty() && cola[MEDIO].empty() && cola[INFERIOR].empty();
 }
 
 void Vista::limpiarColas() {
@@ -70,13 +77,13 @@ void Vista::limpiarColas() {
     }
 }
 
-void Vista::imprimirMano(Mano mano)
-{
-    std::vector<std::string> (&cola)[4] = (mano == JUGADOR) ? colaCartasJugador : colaCartasCrupier;
+void Vista::imprimirMano(Mano mano) {
+    std::vector<std::string> (&cola)[3] = (mano == JUGADOR) ? colaCartasJugador : colaCartasCrupier;
 
     imprimirCola(cola[SUPERIOR]);
-    imprimirCola(cola[MEDIO]);
-    imprimirCola(cola[MEDIO]);
-    imprimirCola(cola[MEDIO]);
+
+    for (int i = 0; i < 3; i++)
+        imprimirCola(cola[MEDIO]);
+
     imprimirCola(cola[INFERIOR]);
 }

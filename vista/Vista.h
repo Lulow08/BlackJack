@@ -19,12 +19,11 @@ class Vista {
 
         void añadirCartaACola(Mano mano, const std::string& valor, const std::string& palo, Color colorEnum);
 
-        void imprimirCola(const std::vector<std::string>& cola);
+        void imprimirCola(const std::vector<std::string>& cola) const;
+        bool esColaVacia(std::vector<std::string> (&cola)[3]) const;
         void limpiarColas();
 
         void imprimirMano(Mano mano);
-        void actualizarCartasJugador();
-        void actualizarCartasCrupier();
 
     private:
         // Colores ANSI
@@ -35,6 +34,6 @@ class Vista {
         const std::string colReset = "\u001B[0m";
 
         enum { SUPERIOR, MEDIO, INFERIOR }; // Para mayor claridad con los índices array
-        std::vector<std::string> colaCartasJugador[4];
-        std::vector<std::string> colaCartasCrupier[4];
+        std::vector<std::string> colaCartasJugador[3];
+        std::vector<std::string> colaCartasCrupier[3];
 };
