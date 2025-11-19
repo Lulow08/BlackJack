@@ -3,8 +3,9 @@
 #include <string>
 #include <vector>
 
+#include "Carta.h"
+
 enum Mano { JUGADOR, CRUPIER }; // Enum para elegir entre la cola de jugador o crupier
-enum Color { NEGRO, ROJO };
 
 class Vista {
     public:

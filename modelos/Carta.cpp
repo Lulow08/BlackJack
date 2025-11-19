@@ -1,7 +1,7 @@
 #include "Carta.h"
 
-Carta::Carta(int pValorNominal, const std::string& pPalo)
-    : valorNominal{pValorNominal}, palo{pPalo} {}
+Carta::Carta(int pValorNominal, const std::string& pPalo, const Color& pColor)
+    : valorNominal{pValorNominal}, palo{pPalo}, color{pColor} {}
 
 void Carta::convertirAsAUno() {
     if (valorNominal == 11 && !cambioAUno) {

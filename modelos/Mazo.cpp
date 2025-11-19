@@ -9,21 +9,27 @@ Mazo::Mazo() {
 
 void Mazo::generarMazo() {
     cartasEnMazo.clear();
-    std::vector<std::string> palos = {"Corazones", "Diamantes", "Tréboles", "Picas"};
+
+    std::vector<std::pair<std::string, Color>> palos = {
+        {"♥", ROJO},
+        {"♦", ROJO},
+        {"♣", NEGRO},
+        {"♠", NEGRO}
+    };
     
-    for (const auto& palo : palos) {
+    for (const auto& [palo, color] : palos) {
         // Cartas del 2 al 10
         for (int valor = 2; valor <= 10; valor++) {
-            cartasEnMazo.push_back(Carta(valor, palo));
+            cartasEnMazo.push_back(Carta(valor, palo, color));
         }
         
         // Figuras (J, K, Q valen 12 13 y 14 respectivamente)
         for (int valor = 12; valor <= 14; valor++) {
-            cartasEnMazo.push_back(Carta(valor, palo));
+            cartasEnMazo.push_back(Carta(valor, palo, color));
         }
         
         // As (vale 11 inicialmente)
-        cartasEnMazo.push_back(Carta(11, palo));
+        cartasEnMazo.push_back(Carta(11, palo, color));
     }
 
     barajar();
