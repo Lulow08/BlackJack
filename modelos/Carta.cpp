@@ -10,20 +10,20 @@ void Carta::convertirAsAUno() {
     }
 }
 
-std::string Carta::getNombreCarta() const {
-    std::string nombre;
+std::string Carta::getValorASCII() const {
+    std::string valorASCII;
 
     if (valorNominal == 11) {
-        nombre = "A";
+        valorASCII = "A";
     } else if (valorNominal == 12) {
-        nombre = "J";
+        valorASCII = "J";
     } else if (valorNominal == 13) {
-        nombre = "Q";
+        valorASCII = "Q";
     } else if (valorNominal == 14) {
-        nombre = "K";
+        valorASCII = "K";
     } else {
-        nombre = std::to_string(valorNominal);
+        valorASCII = std::to_string(valorNominal);
     }
 
-    return nombre + " de " + palo;
+    return valorASCII;
 }

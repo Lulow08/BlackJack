@@ -16,7 +16,7 @@ class Carta {
         std::string getPalo() const { return palo; }
         Color getColor() const { return color; }
         bool getEstado() const { return cambioAUno; }
-        std::string getNombreCarta() const;
+        std::string getValorASCII() const;
 
     private:
         int valorNominal; 
