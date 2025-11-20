@@ -1,21 +1,18 @@
 #include "Vista.h"
+#include "Crupier.h"
 
 #include <iostream>
 
 int main() {
     Vista vista;
-    
-    vista.añadirCartaACola(JUGADOR, "A", "♥", ROJO);
-    vista.añadirCartaACola(JUGADOR, "10", "♥", NEGRO);
-    vista.añadirCartaACola(JUGADOR, "8", "♥", ROJO);
+    Mazo mazo;
+    Crupier crupier(mazo, vista);
+    Jugador jugador(vista);
 
+    crupier.empezarNuevaRonda(jugador);
     vista.imprimirMano(JUGADOR);
-
-    std::cin.get();
-
-    vista.limpiarColas();
-
-    vista.imprimirMano(JUGADOR);
+    std::cout << "\n\n";
+    vista.imprimirMano(CRUPIER);
 
     std::cin.get();
     return 0;
