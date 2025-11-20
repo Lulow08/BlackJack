@@ -30,6 +30,16 @@ void Vista::mostrarMenu() const {
     )" << std::endl;
 }
 
+void Vista::mostrarSubMenu() const {
+    std::cout << R"(
+                1 - Dar carta al jugador
+                2 - Quitar última carta del jugador
+                3 - Dar carta al crupier
+                4 - Quitar última carta del crupier
+                5 - Volver al menú principal
+    )" << std::endl;
+}
+
 void Vista::limpiarPantalla() const {
     #ifdef _WIN32
         system("cls");

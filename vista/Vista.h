@@ -16,6 +16,8 @@ class Vista {
         void mostrarTitulo() const;
         void mostrarMenu() const;
 
+        void mostrarSubMenu() const; // TEMPORAL para la versión test demo
+
         void mostrarTexto(const std::string& texto) const;
 
         void añadirCartaACola(Mano mano, const std::string& valor, const std::string& palo, Color colorEnum);
