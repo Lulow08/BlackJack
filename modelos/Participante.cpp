@@ -5,6 +5,8 @@ Participante::Participante(Vista& pVista) : vista{pVista} {};
 void Participante::recibirCarta(const Carta& carta) {
     mano.push_back(carta);
     ajustarMano();
+
+    vista.añadirCartaACola(getTipoDeMano(), carta.getValorASCII(), carta.getPalo(), carta.getColor());
 }
 
 void Participante::limpiarMano() {
