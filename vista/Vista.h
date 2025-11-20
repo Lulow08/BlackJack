@@ -1,3 +1,44 @@
+/*
+    Proyecto: BlackJack (Tercera entrega)
+    Curso: Fundamentos de Programación Orientada a Objetos (FPOO)
+    Universidad del Valle
+    Información CRC:
+   
+    Clase: Vista
+    
+    Responsabilidades:
+        - Mostrar la interfaz gráfica del juego (título, menús, mensajes)
+        - Gestionar la representación visual de las cartas en consola
+        - Manejar las colas de impresión para las manos del jugador y crupier
+        - Proporcionar métodos para limpiar pantalla y mostrar texto
+        - Renderizar las cartas con colores ANSI y formato ASCII art
+
+    Colaboradores:
+        - Carta (para obtener información de las cartas a mostrar)
+        - Participante (a través del enum Mano para distinguir manos)
+
+    @details Maneja la interfaz de usuario del juego de Blackjack utilizando caracteres 
+             especiales Unicode y colores ANSI para crear una representación visual de las cartas.
+             Implementa un sistema de colas para apilar cartas horizontalmente con efecto de 
+             profundidad. Es responsable de toda la salida visual del programa.
+    
+    Autores:
+    Lesly Zapata
+    Yostin Ramirez
+    Juan Manuel Rosero
+    Joseph Terreros
+    Juan Esteban Mina
+
+    Correos:
+    lesly.zapata@correounivalle.edu.co
+    yostin.ramirez@correounivalle.edu.co
+    joseph.terreros@correounivalle.edu.co
+    juan.encarnacion@correounivalle.edu.co
+    juan.esteban.mina@correounivalle.edu.co
+
+    @date Fecha: Noviembre 2025
+*/
+
 #pragma once
 
 #include <string>
