@@ -13,6 +13,8 @@ class Crupier : public Participante {
         void darCartaACrupier(size_t cantidad);
         void jugarTurno();
 
+        Mano getTipoDeMano() const override { return CRUPIER; }
+
     private:
         Mazo mazo;
 };
