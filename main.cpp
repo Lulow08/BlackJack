@@ -1,3 +1,5 @@
+// REPOSITORIO: https://github.com/Lulow08/BlackJack.git
+
 #include "Vista.h"
 #include "Crupier.h"
 #include "Jugador.h"
