@@ -33,10 +33,9 @@ void Vista::mostrarMenu() const {
 void Vista::mostrarSubMenu() const {
     std::cout << R"(
                 1 - Dar carta al jugador
-                2 - Quitar última carta del jugador
-                3 - Dar carta al crupier
-                4 - Quitar última carta del crupier
-                5 - Volver al menú principal
+                2 - Dar carta al crupier
+                3 - Limpiar ambas manos
+                4 - Volver al menú principal
     )" << std::endl;
 }
 

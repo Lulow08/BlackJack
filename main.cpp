@@ -51,6 +51,38 @@ int main() {
                 vista.mostrarTexto("\n\nCartas del crupier:");
                 vista.imprimirMano(CRUPIER);
 
+                bool continuarEnPartida = true;
+
+                while (continuarEnPartida) {
+                    vista.mostrarSubMenu();
+                    int opSub = leerOpcion(1, 4);
+
+                    switch (opSub) {
+
+                        case 1:  // Dar carta al jugador
+                            crupier.darCartaAJugador(jugador, 1);
+                            vista.imprimirMano(JUGADOR);
+                            break;
+
+                        case 2:  // Dar carta al crupier
+                            crupier.darCartaACrupier(1);
+                            vista.imprimirMano(CRUPIER);
+                            break;
+
+                        case 3:  // Limpiar manos
+                            vista.limpiarColas();
+                            vista.imprimirMano(JUGADOR);
+                            vista.imprimirMano(CRUPIER);
+                            break;
+
+                        case 4:  // Volver
+                            continuarEnPartida = false;
+                            vista.limpiarPantalla();
+                            vista.mostrarTitulo();
+                            break;
+                    }
+                }
+
                 break;
             }
 
