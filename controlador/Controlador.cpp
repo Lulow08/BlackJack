@@ -4,7 +4,7 @@
 
 Controlador::Controlador(Vista& pVista) : vista{pVista} {}
 
-int Controlador::obtenerEleccionMenu(size_t opcionMin, size_t opcionMax) const {
+int Controlador::obtenerEleccionMenu(int opcionMin, int opcionMax) const {
     int opcion;
     bool esEntradaValida{};
 
