@@ -7,35 +7,41 @@ Vista::Vista() {}
 void Vista::mostrarTitulo() const {
     limpiarPantalla();
     std::cout << colAmarillo << R"(
- ╔══════════════════════════════════════════════════════════════════════════════╗
- ║                                                                              ║
- ║ ██████╗ ██╗      █████╗  ██████╗██╗  ██╗         ██╗ █████╗  ██████╗██╗  ██╗ ║
- ║ ██╔══██╗██║     ██╔══██╗██╔════╝██║ ██╔╝         ██║██╔══██╗██╔════╝██║ ██╔╝ ║
- ║ ██████╔╝██║     ███████║██║     █████╔╝          ██║███████║██║     █████╔╝  ║
- ║ ██╔══██╗██║     ██╔══██║██║     ██╔═██╗     ██   ██║██╔══██║██║     ██╔═██╗  ║
- ║ ██████╔╝███████╗██║  ██║╚██████╗██║  ██╗    ╚█████╔╝██║  ██║╚██████╗██║  ██╗ ║
- ║ ╚═════╝ ╚══════╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝     ╚════╝ ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝ ║
- ║                                                                              ║
-██████████████████████████████████████████████████████████████████████████████████
-    )" << colReset << std::endl;
+     ▄▄▄▄  ▄▄▄▄▄                                   ▄▄▄  ▄▄▄▀▀█   
+   ▄▀    ▀▀     ▀▀▄▄▄▀▀▀▄           ▄▀▀▄▄▄▀▀▄   ▄▀▀   ▀▀   ▄ █   
+  █  ▄███▄ ▄███  ▄   ▄▄ █▄▄▄▄   ▄▄▄▄█ ▄   ▄▄ ▀▄█  ▄███  ███▀ █   
+ █  █▀  ███▀ ███  █▄█▀      █▄▄▀       █▄█▀      █▀  ██████ ▄▀   
+ █ █     ██   ███  ██   ███     ▄███ █  ██   █  █     ██ ██ █    
+ ▀▄ █  ▄ ██   ▄▀   ██  ██  ██▀ ██   ██  ██   ██▄ █  ▄ ██ ██ █    
+  ▀▄ ▀▀  █▀▄█████  ██ ██   ██ ██    █   ██  █▀▀   ▀▀  ██ ██ █    
+   ▀█▄  █     ▀███ ██ ██   ██ ██        ██▄▀██        ██ ██ █▄▄▄ 
+    █  █▄       ██ ██  ▀█▄▄███ █▄   █  ▄██▀  ██       ██ ██    █ 
+   ▄▀ ▀▀███     █ ▄██▄▀ ▀▀  █   ████  ███   ▄███  ▄██  ▀  █ ██ █ 
+  ▄█▄▄▄  ▀███▄▄▀    ▀▀    ▄   █     ▄▄  ▀██   █▀ █▀▀██   ▄▀ ██ █ 
+       ▀▄▄     ▄▄▀▀▀▄▄█▀▀▀ ▀▀▀ ▀▀▀▀▀  ▀▄▄   █▄   █   ████▀    ▄▀ 
+          ▀▀▀▀▀                          ▀▀▀  ▀▀▄ ▀       ▄▀▀▀   
+                                                ▀▄▄▄█▀▀▀▀▀  TM
+    )" << colReset;
 }
 
 void Vista::mostrarMenu() const {
     std::cout << R"(
-                1 - Empezar una nueva partida
-                2 - Cargar partida anterior
-                3 - Estadisticas
-                4 - Como jugar
-                5 - Salir
+            Menu principal
+            ~~~~~~~~~~~~~~
+            1. Empezar una nueva partida
+            2. Cargar partida anterior
+            3. Estadisticas
+            4. Como jugar
+            5. Salir
     )" << std::endl;
 }
 
 void Vista::mostrarSubMenu() const {
     std::cout << R"(
-                1 - Dar carta al jugador
-                2 - Dar carta al crupier
-                3 - Limpiar ambas manos
-                4 - Volver al menú principal
+            1. Dar carta al jugador
+            2. Dar carta al crupier
+            3. Limpiar ambas manos
+            4. Volver al menú principal
     )" << std::endl;
 }
 
