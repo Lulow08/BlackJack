@@ -1,11 +1,9 @@
 #include "Apuesta.h"
 
 Apuesta::Apuesta() 
-    : dineroTotal(0.0), apuestaActual(0.0), dineroInicial(1000.0) {
-        dineroTotal = dineroInicial;
-    }
+    : dineroInicial(1000), dineroTotal(dineroInicial), apuestaActual(0) {}
 
-bool Apuesta::aumentarApuesta(double cantidad) {
+bool Apuesta::aumentarApuesta(int cantidad) {
     if (cantidad <= 0) {
         return false;
     }
@@ -19,7 +17,7 @@ bool Apuesta::aumentarApuesta(double cantidad) {
     return false;
 }
 
-bool Apuesta::reducirApuesta(double cantidad) {
+bool Apuesta::reducirApuesta(int cantidad) {
     if (cantidad <= 0) {
         return false;
     }
@@ -35,20 +33,20 @@ bool Apuesta::reducirApuesta(double cantidad) {
 
 void Apuesta::resetearApuesta() {
     dineroTotal += apuestaActual;
-    apuestaActual = 0.0;
+    apuestaActual = 0;
 }
 
 void Apuesta::ganar() {
-    double ganancia = apuestaActual * 2;
+    int ganancia = apuestaActual * 2;
     dineroTotal += ganancia;
-    apuestaActual = 0.0;
+    apuestaActual = 0;
 }
 
 void Apuesta::perder() {
-    apuestaActual = 0.0;
+    apuestaActual = 0;
 }
 
 void Apuesta::empatar() {
     dineroTotal += apuestaActual;
-    apuestaActual = 0.0;
+    apuestaActual = 0;
 }

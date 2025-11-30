@@ -43,8 +43,8 @@ class Apuesta {
     public:
         Apuesta();
 
-        bool aumentarApuesta(double cantidad);
-        bool reducirApuesta(double cantidad);
+        bool aumentarApuesta(int cantidad);
+        bool reducirApuesta(int cantidad);
         void resetearApuesta();
 
         void ganar();
@@ -53,11 +53,11 @@ class Apuesta {
 
         // Getters
 
-        double getDineroTotal() const { return dineroTotal; }
-        double getApuestaActual() const { return apuestaActual; }
+        int getDineroTotal() const { return dineroTotal; }
+        int getApuestaActual() const { return apuestaActual; }
 
     private:
-        double dineroTotal;
-        double apuestaActual;
-        double dineroInicial;
+        int dineroInicial;
+        int dineroTotal;
+        int apuestaActual;
 };
