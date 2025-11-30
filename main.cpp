@@ -28,18 +28,38 @@ int main() {
                 std::string nombre = controlador.getNombreJugador(3, 8);
                 jugador.setNombre(nombre);
 
-                vista.mostrarPantallaApuesta(nombre, apuesta.getDineroTotal(), apuesta.getApuestaActual());
-                char opcionApuesta = controlador.getOpcionChar("WQCVB", APUESTA);
-                switch (opcionApuesta) {
-                    case 'W':
-                        crupier.empezarNuevaRonda(jugador);
-                        vista.mostrarPantallaJuego();
-                        std::cin.get();
-                        break;
-                    
-                    default:
-                        break;
-                }
+                bool salirDeApuesta{};
+
+                do {
+                    vista.mostrarPantallaApuesta(nombre, apuesta.getDineroTotal(), apuesta.getApuestaActual());
+                    char opcionApuesta = controlador.getOpcionChar("WQCVB", APUESTA);
+
+                    switch (opcionApuesta) {
+                        case 'W':
+                            crupier.empezarNuevaRonda(jugador);
+                            vista.mostrarPantallaJuego();
+                            std::cin.get();
+                            salirDeApuesta = true;
+                            break;
+                        
+                        case 'C':
+                            apuesta.aumentarApuesta(100);
+                            break;
+
+                        case 'V':
+                            apuesta.aumentarApuesta(250);
+                            break;
+
+                        case 'B':
+                            apuesta.aumentarApuesta(500);
+                            break;
+
+                        case 'Q':
+                            apuesta.resetearApuesta();
+                            salirDeApuesta = true;
+                            break;
+                    }
+                } while (!salirDeApuesta);
             }
             break;
 
