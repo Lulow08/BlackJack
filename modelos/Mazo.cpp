@@ -41,6 +41,6 @@ void Mazo::barajar() {
     indiceCartaActual = 0;
 }
 
-int Mazo::getCartasRestantes() const {
+size_t Mazo::getCartasRestantes() const {
     return cartasEnMazo.size() - indiceCartaActual;
 }
