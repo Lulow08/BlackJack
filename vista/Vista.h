@@ -56,6 +56,8 @@ class Vista {
 
         void mostrarTitulo() const;
         void mostrarMenuPrincipal() const;
+        void mostrarMenuApuesta() const;
+        void mostrarGameData(const std::string& name, int dinero, int apuesta) const;
         void mostrarPantallaPrincipal() const;
 
         void mostrarTexto(const std::string& texto) const;
@@ -72,11 +74,11 @@ class Vista {
 
     private:
         // Colores ANSI
-        const std::string colNegro = "\u001B[1;30m";
-        const std::string colRojo = "\u001B[1;31m";
-        const std::string colAmarillo = "\u001B[1;33m";
-        const std::string colCian = "\u001B[1;36m";
-        const std::string colReset = "\u001B[0m";
+        const std::string colNegro = "\e[1;30m";
+        const std::string colRojo = "\e[1;31m";
+        const std::string colAmarillo = "\e[1;33m";
+        const std::string colCian = "\e[1;36m";
+        const std::string colReset = "\e[0m";
 
         const std::string sangria = "          ";
 

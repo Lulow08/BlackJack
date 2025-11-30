@@ -35,6 +35,31 @@ void Vista::mostrarMenuPrincipal() const {
     std::cout << std::endl;
 }
 
+void Vista::mostrarMenuApuesta() const {
+    mostrarTexto(sangria,"Realiza tu apuesta: ","\n");
+
+    std::cout << sangria; mostrarTexto(colNegro,"[W] Listo  [Q] Cancelar","\n\n");
+
+    std::cout << sangria; mostrarTexto(colCian,"  =─=  ","  "); mostrarTexto(colRojo,"  =─=  ","  "); mostrarTexto(colAmarillo,"  =─=  ","\n");
+    std::cout << sangria; mostrarTexto(colCian,"=▀ ♦ ▀=","  "); mostrarTexto(colRojo,"=▀ ♥ ▀=","  "); mostrarTexto(colAmarillo,"=▀ ♣ ▀=","\n");
+    std::cout << sangria; mostrarTexto(colCian,"█ 100 █","  "); mostrarTexto(colRojo,"█ 250 █","  "); mostrarTexto(colAmarillo,"█ 500 █","\n");
+    std::cout << sangria; mostrarTexto(colCian,"=▄ ♦ ▄=","  "); mostrarTexto(colRojo,"=▄ ♥ ▄=","  "); mostrarTexto(colAmarillo,"=▄ ♣ ▄=","\n");
+    std::cout << sangria; mostrarTexto(colCian,"░░=─=░░","  "); mostrarTexto(colRojo,"░░=─=░░","  "); mostrarTexto(colAmarillo,"░░=─=░░","\n");
+    std::cout << sangria; mostrarTexto(colCian,"  ░░░  ","  "); mostrarTexto(colRojo,"  ░░░  ","  "); mostrarTexto(colAmarillo,"  ░░░  ","\n\n");
+    std::cout << sangria; mostrarTexto(colCian,"  [C]  ","  "); mostrarTexto(colRojo,"  [V]  ","  "); mostrarTexto(colAmarillo,"  [B]  ","\n");
+    std::cout << colReset << std::endl;
+}
+
+void Vista::mostrarGameData(const std::string& name, int dinero, int apuesta) const {
+    std::cout << sangria;
+
+    mostrarTexto("", name, "  ");
+    mostrarTexto(colCian, "Cash: $", std::to_string(dinero));
+    mostrarTexto(colAmarillo, "  Bet: $", std::to_string(apuesta));
+
+    std::cout << colReset << "\n\n";
+}
+
 void Vista::mostrarPantallaPrincipal() const {
     limpiarPantalla();
     mostrarTitulo();
