@@ -47,7 +47,13 @@
 
 class Jugador : public Participante {
     public:
-        Jugador(Vista& pVista);
+        Jugador(Vista& pVista, const std::string& nombre);
+
+        // Getters
 
         Mano getTipoDeMano() const override { return JUGADOR; }
+        std::string getNombre() const { return nombre; }
+
+    private:
+        const std::string nombre;
 };
