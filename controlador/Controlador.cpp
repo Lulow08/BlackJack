@@ -5,13 +5,13 @@
 #include <cctype>
 #include <limits>
 
-Controlador::Controlador(Vista& pVista) : vista{pVista} {}
+Controlador::Controlador(Vista& pVista, Jugador& pJugador, Apuesta& pApuesta) : vista{pVista}, jugador{pJugador}, apuesta{pApuesta} {}
 
-int Controlador::getOpcionMenuPrincipal(int opcionMin, int opcionMax) const {
+int Controlador::getOpcionInt(int opcionMin, int opcionMax) const {
     int opcion{};
 
     while(true) {
-        vista.solicitarOpcion();
+        vista.solicitarInput("Ingrese una opcion: ");
 
         if(std::cin >> opcion) {
 
@@ -34,7 +34,7 @@ char Controlador::getOpcionChar(const std::string& opciones, Menu menu) const {
     char opcion{};
 
     while(true) {
-        vista.solicitarOpcion();
+        vista.solicitarInput("Ingrese una opcion: ");
 
         if(std::cin >> opcion) {
             opcion = static_cast<char>(std::toupper(opcion));
@@ -44,16 +44,44 @@ char Controlador::getOpcionChar(const std::string& opciones, Menu menu) const {
             return opcion;
         }
 
-        if(std::cin.fail()) {
+        std::cin.clear();
+
+        if(menu == APUESTA)
+        vista.mostrarPantallaApuesta(jugador.getNombre(), apuesta.getDineroTotal(), apuesta.getApuestaActual());
+
+        if(menu == JUEGO)
+        vista.mostrarPantallaPrincipal();
+
+        vista.mostrarTexto("Invalido", "\e[1;31m");
+    }
+}
+
+std::string Controlador::getNombreJugador(size_t charMin, size_t charMax) const {
+    std::string nombre{};
+
+    while(true) {
+        vista.solicitarInput("Escriba su nickname: ");
+
+        if(std::getline(std::cin, nombre)) {
+            size_t longitud = nombre.length();
+
+            if(longitud >= charMin && longitud <= charMax)
+            return nombre;
+
+            else {
+                vista.limpiarPantalla();
+                vista.mostrarTitulo();
+                vista.mostrarTexto("Solo nombres entre " + std::to_string(charMin) + 
+                                   " y " + std::to_string(charMax) + " letras", "\e[1;30m");
+            }
+        }
+
+        else {
             std::cin.clear();
             limpiarBuffer();
 
-            if(APUESTA)
-            vista.mostrarPantallaApuesta();
-
-            if(JUEGO)
-            vista.mostrarPantallaJuego();
-            
+            vista.limpiarPantalla();
+            vista.mostrarTitulo();
             vista.mostrarTexto("Invalido", "\e[1;31m");
         }
     }

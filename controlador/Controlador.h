@@ -43,18 +43,24 @@
 #pragma once
 
 #include "Vista.h"
+#include "Jugador.h"
+#include "Apuesta.h"
 
 enum Menu { APUESTA, JUEGO };
 
 class Controlador {
     public:
-        Controlador(Vista& pVista);
+        Controlador(Vista& pVista, Jugador& pJugador, Apuesta& pApuesta);
 
-        int getOpcionMenuPrincipal(int opcionMin, int opcionMax) const;
+        int getOpcionInt(int opcionMin, int opcionMax) const;
         char getOpcionChar(const std::string& opciones, Menu menu) const;
+
+        std::string getNombreJugador(size_t charMin, size_t charMax) const;
 
         void limpiarBuffer() const;
 
     private:
         Vista& vista;
+        Jugador& jugador;
+        Apuesta& apuesta;
 };

@@ -45,6 +45,7 @@
 #include <vector>
 
 #include "Carta.h"
+#include "Apuesta.h"
 
 enum Mano { JUGADOR, CRUPIER }; // Enum para elegir entre la cola de jugador o crupier en el metodo de Vista
 
@@ -56,15 +57,15 @@ class Vista {
         void mostrarTitulo() const;
         void mostrarMenuPrincipal() const;
         void mostrarMenuApuesta() const;
-        void mostrarGameData(const std::string& name, int dinero, int apuesta) const;
+        void mostrarGameData(const std::string& nombre, int dinero, int apuesta) const;
 
         // Pantallas
         void mostrarPantallaPrincipal() const;
-        void mostrarPantallaApuesta() const;
+        void mostrarPantallaApuesta(const std::string& nombre, int dinero, int apuesta);
         void mostrarPantallaJuego();
         
         // Utils
-        void solicitarOpcion() const;
+        void solicitarInput(const std::string& mensaje) const;
         void mostrarTexto(const std::string& texto) const;
         void mostrarTexto(const std::string& texto, const std::string& color) const;
         void mostrarTexto(const std::string& prefijo, const std::string& texto, const std::string& sufijo) const;

@@ -50,10 +50,10 @@ void Vista::mostrarMenuApuesta() const {
     std::cout << colReset << std::endl;
 }
 
-void Vista::mostrarGameData(const std::string& name, int dinero, int apuesta) const {
+void Vista::mostrarGameData(const std::string& nombre, int dinero, int apuesta) const {
     std::cout << sangria;
 
-    mostrarTexto("", name, "  ");
+    mostrarTexto("", nombre, "  ");
     mostrarTexto(colCian, "Cash: $", std::to_string(dinero));
     mostrarTexto(colAmarillo, "  Bet: $", std::to_string(apuesta));
 
@@ -66,9 +66,10 @@ void Vista::mostrarPantallaPrincipal() const {
     mostrarMenuPrincipal();
 }
 
-void Vista::mostrarPantallaApuesta() const {
+void Vista::mostrarPantallaApuesta(const std::string& nombre, int dinero, int apuesta) {
     limpiarPantalla();
     mostrarTitulo();
+    mostrarGameData(nombre, dinero, apuesta);
     mostrarMenuApuesta();
 }
 
@@ -78,8 +79,8 @@ void Vista::mostrarPantallaJuego() {
     imprimirMano(JUGADOR);
 }
 
-void Vista::solicitarOpcion() const {
-    mostrarTexto(sangria, "Ingrese una opcion: ", "");
+void Vista::solicitarInput(const std::string& mensaje) const {
+    mostrarTexto(sangria, mensaje, "");
 }
 
 void Vista::mostrarTexto(const std::string& texto) const {
