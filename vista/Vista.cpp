@@ -25,13 +25,20 @@ void Vista::mostrarTitulo() const {
 }
 
 void Vista::mostrarMenuPrincipal() const {
-    std::cout << colAmarillo << "          Menu Principal\n" << colReset;
-    std::cout << colAmarillo << "          ~~~~~~~~~~~~~~\n" << colReset;
-    std::cout << "          1. Empezar una nueva partida\n";
-    std::cout << "          2. Cargar partida anterior\n";
-    std::cout << "          3. Estadisticas\n";
-    std::cout << "          4. Como jugar\n";
-    std::cout << "          5. Salir\n";
+    mostrarTexto("Menu Principal", colAmarillo);
+    mostrarTexto("~~~~~~~~~~~~~~", colAmarillo);
+    mostrarTexto("1. Empezar una nueva partida");
+    mostrarTexto("2. Cargar partida anterior");
+    mostrarTexto("3. Estadisticas");
+    mostrarTexto("4. Como jugar");
+    mostrarTexto("5. Salir");
+    std::cout << std::endl;
+}
+
+void Vista::mostrarPantallaPrincipal() const {
+    limpiarPantalla();
+    mostrarTitulo();
+    mostrarMenuPrincipal();
 }
 
 void Vista::limpiarPantalla() const {
@@ -43,7 +50,15 @@ void Vista::limpiarPantalla() const {
 }
 
 void Vista::mostrarTexto(const std::string& texto) const {
-    std::cout << texto << "\n";
+    std::cout << sangria << texto << "\n";
+}
+
+void Vista::mostrarTexto(const std::string& texto, const std::string& color) const {
+    std::cout << sangria << color << texto << colReset << "\n";
+}
+
+void Vista::mostrarTexto(const std::string& prefijo, const std::string& texto, const std::string& sufijo) const {
+    std::cout << prefijo << texto << sufijo;
 }
 
 void Vista::añadirCartaACola(Mano mano, const std::string& valor, const std::string& palo, Color colorEnum) {

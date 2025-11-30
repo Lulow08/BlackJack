@@ -56,8 +56,11 @@ class Vista {
 
         void mostrarTitulo() const;
         void mostrarMenuPrincipal() const;
+        void mostrarPantallaPrincipal() const;
 
         void mostrarTexto(const std::string& texto) const;
+        void mostrarTexto(const std::string& texto, const std::string& color) const;
+        void mostrarTexto(const std::string& prefijo, const std::string& texto, const std::string& sufijo) const;
 
         void añadirCartaACola(Mano mano, const std::string& valor, const std::string& palo, Color colorEnum);
 
@@ -74,6 +77,8 @@ class Vista {
         const std::string colAmarillo = "\u001B[1;33m";
         const std::string colCian = "\u001B[1;36m";
         const std::string colReset = "\u001B[0m";
+
+        const std::string sangria = "          ";
 
         enum { SUPERIOR, MEDIO, INFERIOR }; // Para mayor claridad con los índices array
         std::vector<std::string> colaCartasJugador[3];

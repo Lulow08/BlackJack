@@ -52,5 +52,5 @@ class Controlador {
         void obtenerAccionJugador() const;
 
     private:
-        Vista vista;
+        Vista& vista;
 };
