@@ -11,7 +11,7 @@ int leerOpcion(int min, int max) {
     int opcion;
 
     while (true) {
-        std::cout << "Seleccione una opción: ";
+        std::cout << "\n          Ingrese una opción: ";
         std::cin >> opcion;
 
         // Validaciones de entrada
@@ -38,66 +38,18 @@ int main() {
     vista.mostrarTitulo();
 
     while (true) {
-        vista.mostrarMenu();
+        vista.mostrarMenuPrincipal();
         int opcion = leerOpcion(1, 5);
 
         switch (opcion) {
-            case 1: {   
-                vista.limpiarPantalla();
-
-                crupier.empezarNuevaRonda(jugador);
-
-                vista.mostrarTexto("\nCartas del jugador:");
-                vista.imprimirMano(JUGADOR);
-
-                vista.mostrarTexto("\n\nCartas del crupier:");
-                vista.imprimirMano(CRUPIER);
-
-                bool continuarEnPartida = true;
-
-                while (continuarEnPartida) {
-                    vista.mostrarSubMenu();
-                    int opSub = leerOpcion(1, 4);
-
-                    switch (opSub) {
-
-                        case 1:  // Dar carta al jugador
-                            crupier.darCartaAJugador(jugador, 1);
-                            vista.imprimirMano(JUGADOR);
-                            break;
-
-                        case 2:  // Dar carta al crupier
-                            crupier.darCartaACrupier(1);
-                            vista.imprimirMano(CRUPIER);
-                            break;
-
-                        case 3:  // Limpiar manos
-                            vista.limpiarColas();
-                            vista.imprimirMano(JUGADOR);
-                            vista.imprimirMano(CRUPIER);
-                            break;
-
-                        case 4:  // Volver
-                            continuarEnPartida = false;
-                            vista.limpiarPantalla();
-                            vista.mostrarTitulo();
-                            break;
-                    }
-                }
-
+            case 1:
                 break;
-            }
-
             case 2:
-                vista.mostrarTexto("VERSIÓN DEMO - Funcion no implementada");
                 break;
             case 3:
-                vista.mostrarTexto("VERSIÓN DEMO - Funcion no implementada");
                 break;
             case 4:
-                vista.mostrarTexto("VERSIÓN DEMO - Funcion no implementada");
                 break;
-
             case 5:
                 return 0;
         }

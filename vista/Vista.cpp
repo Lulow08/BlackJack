@@ -20,29 +20,18 @@ void Vista::mostrarTitulo() const {
   ▄█▄▄▄  ▀███▄▄▀    ▀▀    ▄   █     ▄▄  ▀██   █▀ █▀▀██   ▄▀ ██ █ 
        ▀▄▄     ▄▄▀▀▀▄▄█▀▀▀ ▀▀▀ ▀▀▀▀▀  ▀▄▄   █▄   █   ████▀    ▄▀ 
           ▀▀▀▀▀                          ▀▀▀  ▀▀▄ ▀       ▄▀▀▀   
-                                                ▀▄▄▄█▀▀▀▀▀  TM
-    )" << colReset;
+                                                ▀▄▄▄█▀▀▀▀▀  TM)"
+    << colReset << std::endl;
 }
 
-void Vista::mostrarMenu() const {
-    std::cout << R"(
-            Menu principal
-            ~~~~~~~~~~~~~~
-            1. Empezar una nueva partida
-            2. Cargar partida anterior
-            3. Estadisticas
-            4. Como jugar
-            5. Salir
-    )" << std::endl;
-}
-
-void Vista::mostrarSubMenu() const {
-    std::cout << R"(
-            1. Dar carta al jugador
-            2. Dar carta al crupier
-            3. Limpiar ambas manos
-            4. Volver al menú principal
-    )" << std::endl;
+void Vista::mostrarMenuPrincipal() const {
+    std::cout << colAmarillo << "          Menu Principal\n" << colReset;
+    std::cout << colAmarillo << "          ~~~~~~~~~~~~~~\n" << colReset;
+    std::cout << "          1. Empezar una nueva partida\n";
+    std::cout << "          2. Cargar partida anterior\n";
+    std::cout << "          3. Estadisticas\n";
+    std::cout << "          4. Como jugar\n";
+    std::cout << "          5. Salir\n";
 }
 
 void Vista::limpiarPantalla() const {

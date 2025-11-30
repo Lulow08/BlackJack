@@ -55,9 +55,7 @@ class Vista {
         void limpiarPantalla() const;
 
         void mostrarTitulo() const;
-        void mostrarMenu() const;
-
-        void mostrarSubMenu() const; // TEMPORAL para la versión test demo
+        void mostrarMenuPrincipal() const;
 
         void mostrarTexto(const std::string& texto) const;
 
