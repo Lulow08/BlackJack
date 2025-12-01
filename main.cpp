@@ -13,7 +13,9 @@ void empezarRonda(Vista& vista, const Controlador& controlador, Jugador& jugador
     Crupier crupier(mazo, vista);
 
     crupier.empezarNuevaRonda(jugador);
-    vista.mostrarPantallaJuego(nombre, apuesta.getDineroTotal(), apuesta.getApuestaActual(), std::to_string(jugador.getValorDeMano()), std::to_string(crupier.getValorDeMano()));
+    vista.mostrarPantallaJuego(nombre, apuesta.getDineroTotal(), apuesta.getApuestaActual(),
+                               std::to_string(jugador.getValorDeMano()), std::to_string(crupier.getValorDeMano()),
+                               NONE);
     std::cin.get();
 }
 

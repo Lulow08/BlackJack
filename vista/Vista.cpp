@@ -50,6 +50,10 @@ void Vista::mostrarMenuApuesta() const {
     std::cout << colReset << std::endl;
 }
 
+void Vista::mostrarMenuAcciones() const {
+    std::cout << "\n"; mostrarTexto("Tomar [T] | Plantarse [P]\n", colNegro);
+}
+
 void Vista::mostrarGameData(const std::string& nombre, int dinero, int apuesta) const {
     std::cout << sangria;
 
@@ -58,6 +62,28 @@ void Vista::mostrarGameData(const std::string& nombre, int dinero, int apuesta) 
     mostrarTexto(colAmarillo, "  Bet: $", std::to_string(apuesta));
 
     std::cout << colReset << "\n\n";
+}
+
+void Vista::mostrarEstado(GameState estado) const {
+    std::cout << "\n" << sangriaCartas;
+
+    if(estado == GANAR)
+    std::cout << colCian << "GANASTE!\n\n" << colReset;
+
+    else if(estado == PERDER)
+    std::cout << colRojo << "Perdiste\n\n" << colReset;
+
+    else if(estado == BUST)
+    std::cout << colRojo << "BUST!\n\n" << colReset;
+
+    else if(estado == EMPATE)
+    std::cout << colNegro << "Empate\n\n" << colReset;
+
+    else if(estado == BLACKJACK)
+    std::cout << colAmarillo << "BLACK JACK!\n\n" << colReset;
+
+    else
+    std::cout << "\n\n";
 }
 
 void Vista::mostrarPantallaPrincipal() const {
@@ -71,11 +97,13 @@ void Vista::mostrarPantallaApuesta(const std::string& nombre, int dinero, int ap
     mostrarMenuApuesta();
 }
 
-void Vista::mostrarPantallaJuego(const std::string& nombre, int dinero, int apuesta, const std::string& valorJugador, const std::string& valorCrupier) {
-    mostrarTitulo();
+void Vista::mostrarPantallaJuego(const std::string& nombre, int dinero, int apuesta, const std::string& valorJugador, const std::string& valorCrupier, GameState estado) {
+    limpiarPantalla();
     mostrarGameData(nombre, dinero, apuesta);
     imprimirMano(CRUPIER, valorCrupier);
+    mostrarEstado(estado);
     imprimirMano(JUGADOR, valorJugador);
+    mostrarMenuAcciones();
 }
 
 void Vista::solicitarInput(const std::string& mensaje) const {
@@ -151,14 +179,16 @@ void Vista::imprimirMano(Mano mano, const std::string& valor) {
     std::vector<std::string> (&cola)[3] = (mano == JUGADOR) ? colaCartasJugador : colaCartasCrupier;
 
     bool esDobleDigito = (valor.length() > 1);
-
     const std::string valorConSangria = esDobleDigito ? "               " : "                ";
-
+    
+    // Colas superiores
     std::cout << valorConSangria << valor << " "; imprimirCola(cola[SUPERIOR]);
 
+    // Colas de en medio (3)
     for (int i = 0; i < 3; i++) {
         std::cout << sangriaCartas; imprimirCola(cola[MEDIO]);
     }
 
+    // Colas inferiores
     std::cout << sangriaCartas; imprimirCola(cola[INFERIOR]);
 }

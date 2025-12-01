@@ -48,6 +48,7 @@
 #include "Apuesta.h"
 
 enum Mano { JUGADOR, CRUPIER }; // Enum para elegir entre la cola de jugador o crupier en el metodo de Vista
+enum GameState { NONE, GANAR, PERDER, BUST, EMPATE, BLACKJACK };
 
 class Vista {
     public:
@@ -57,12 +58,16 @@ class Vista {
         void mostrarTitulo() const;
         void mostrarMenuPrincipal() const;
         void mostrarMenuApuesta() const;
+        void mostrarMenuAcciones() const;
         void mostrarGameData(const std::string& nombre, int dinero, int apuesta) const;
+        void mostrarEstado(GameState estado) const;
 
         // Pantallas
         void mostrarPantallaPrincipal() const;
         void mostrarPantallaApuesta(const std::string& nombre, int dinero, int apuesta);
-        void mostrarPantallaJuego(const std::string& nombre, int dinero, int apuesta, const std::string& valorJugador, const std::string& valorCrupier);
+        void mostrarPantallaJuego(const std::string& nombre, int dinero, int apuesta,
+                                  const std::string& valorJugador, const std::string& valorCrupier,
+                                  GameState estado);
         
         // Utils
         void solicitarInput(const std::string& mensaje) const;
