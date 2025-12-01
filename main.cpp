@@ -1,16 +1,19 @@
 // REPOSITORIO: https://github.com/Lulow08/BlackJack.git
 
 #include "Vista.h"
-#include "Crupier.h"
-#include "Jugador.h"
-#include "Mazo.h"
 #include "Controlador.h"
+#include "Jugador.h"
+#include "Crupier.h"
+#include "Mazo.h"
 #include "Apuesta.h"
+
 #include <iostream>
 
 bool empezarRonda(Vista& vista, const Controlador& controlador, Jugador& jugador, Crupier& crupier, Apuesta& apuesta, const std::string& nombre) {
     crupier.empezarNuevaRonda();
     GameState estado = crupier.evaluarEstado();
+
+    bool empezarNuevaRonda{};
 
     while(estado == NONE) {
         vista.mostrarPantallaJuego(nombre, apuesta.getDineroTotal(), apuesta.getApuestaActual(),
@@ -46,15 +49,18 @@ bool empezarRonda(Vista& vista, const Controlador& controlador, Jugador& jugador
 
     switch (opcionFinal) {
     case 'S':
-        return true;
+        empezarNuevaRonda = true;
         break;
     
-    default:
+    case 'N':
         // Solicitar Guardar partida (cuando se añada)
         apuesta.resetearApuesta();
-        return false;
+        jugador.setNombre("");
+        empezarNuevaRonda = false;
         break;
     }
+
+    return empezarNuevaRonda;
 }
 
 bool prepararNuevaPartida(Vista& vista, const Controlador& controlador, Jugador& jugador, Crupier& crupier, Apuesta& apuesta) {
@@ -116,6 +122,7 @@ bool prepararNuevaPartida(Vista& vista, const Controlador& controlador, Jugador&
 
             case 'Q':
                 apuesta.resetearApuesta();
+                jugador.setNombre("");
                 salirDeApuesta = true;
                 apuestaExitosa = false;
                 break;
@@ -142,8 +149,6 @@ int main() {
         switch (opcion) {
             // Empezar nueva partida
             case 1: {
-                jugador.setNombre(""); // Estar en el menu principal implica reiniciar el nombre
-
                 bool jugando = true;
                 while(jugando) {
                     if(prepararNuevaPartida(vista, controlador, jugador, crupier, apuesta)){
