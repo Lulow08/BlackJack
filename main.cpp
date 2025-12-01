@@ -155,6 +155,7 @@ bool prepararNuevaPartida(Vista& vista, const Controlador& controlador, Jugador&
                 salirDeApuesta = true;
                 apuestaExitosa = false;
 
+                // Menu de guardado
                 if(preguntarPorGuardado) {
                     vista.mostrarMenuGuardado();
                     char opcionGuardado = controlador.getOpcionChar("SN", GUARDADO);
@@ -175,6 +176,7 @@ bool prepararNuevaPartida(Vista& vista, const Controlador& controlador, Jugador&
     return apuestaExitosa;
 }
 
+// Bucle principal
 void cicloJuego(Vista& vista, const Controlador& controlador, Jugador& jugador,
                 Crupier& crupier, Apuesta& apuesta, Serializador& serializador) {
 
@@ -197,7 +199,7 @@ int main() {
     Crupier crupier(mazo, vista, jugador);
     Apuesta apuesta;
     Controlador controlador(vista, jugador, crupier, apuesta);
-    Serializador serializador("archivoDeGuardado", vista, controlador);
+    Serializador serializador("partida", vista, controlador);
 
     while (true) {
         // Menu principal
@@ -221,12 +223,15 @@ int main() {
 
                     cicloJuego(vista, controlador, jugador, crupier, apuesta, serializador);
                 }
-            }
-                break;
+            } break;
+
+            // Mostrar reglas
             case 3:
                 vista.mostrarReglas();
                 std::cin.get();
                 break;
+
+            // Salir
             case 4:
                 return 0;
         }
