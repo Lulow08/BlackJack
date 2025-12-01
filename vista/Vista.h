@@ -1,26 +1,34 @@
 /*
-    Proyecto: BlackJack (Tercera entrega)
+    Proyecto: BlackJack
     Curso: Fundamentos de Programación Orientada a Objetos (FPOO)
     Universidad del Valle
     Información CRC:
    
     Clase: Vista
-    
+
     Responsabilidades:
-        - Mostrar la interfaz gráfica del juego (título, menús, mensajes)
-        - Gestionar la representación visual de las cartas en consola
-        - Manejar las colas de impresión para las manos del jugador y crupier
-        - Proporcionar métodos para limpiar pantalla y mostrar texto
-        - Renderizar las cartas con colores ANSI y formato ASCII art
+        - Mostrar arte ASCII
+        - Renderizar menús (principal, apuesta, acciones, guardado)
+        - Renderizar manos con cartas apiladas horizontalmente
+        - Mostrar pantallas completas (principal, apuesta, juego)
+        - Mostrar estados del juego (GANAR, PERDER, BUST, EMPATE, BLACKJACK)
+        - Mostrar información del juego (nombre, dinero, apuesta)
+        - Limpia la pantalla
+        - Solicitar input al usuario (controlador lo recibe)
+        - Mostrar mensajes de error en pantalla completa
+        - Mostrar reglas del juego
 
     Colaboradores:
-        - Carta (para obtener información de las cartas a mostrar)
-        - Participante (a través del enum Mano para distinguir manos)
+        - Carta (obtiene información para renderizar)
+        - Participante (usa enum Mano para distinguir colas)
+        - Controlador (recibe solicitudes de input)
 
-    @details Maneja la interfaz de usuario del juego de Blackjack utilizando caracteres 
-             especiales Unicode y colores ANSI para crear una representación visual de las cartas.
-             Implementa un sistema de colas para apilar cartas horizontalmente con efecto de 
-             profundidad. Es responsable de toda la salida visual del programa.
+    @details Maneja toda la interfaz de usuario del juego usando caracteres Unicode y 
+             colores ANSI. Implementa un sistema triple de colas: cartas del jugador, cartas 
+             completas del crupier y cartas parciales del crupier (primera visible, resto 
+             oculto). Renderiza cartas con efecto de profundidad apilándolas horizontalmente
+             Coordina múltiples pantallas del juego mostrando información contextual según 
+             el estado. Utiliza sangrías para centrar contenido visualmente
     
     Autores:
     Lesly Zapata
@@ -36,7 +44,7 @@
     juan.encarnacion@correounivalle.edu.co
     juan.esteban.mina@correounivalle.edu.co
 
-    @date Fecha: Noviembre 2025
+    @date Fecha: Diciembre 2025
 */
 
 #pragma once

@@ -1,28 +1,31 @@
 /*
-    Proyecto: BlackJack (Tercera entrega)
+    Proyecto: BlackJack
     Curso: Fundamentos de Programación Orientada a Objetos (FPOO)
     Universidad del Valle
     Información CRC:
    
     Clase: Participante
-    
+
     Responsabilidades:
         - Almacenar y gestionar una mano de cartas
-        - Recibir nuevas cartas y añadirlas a la mano
+        - Recibir nuevas cartas y notificar a la Vista para mostrarlas
         - Calcular el valor total de la mano actual
-        - Ajustar automáticamente el valor de los Ases (de 11 a 1) para evitar pasarse de 21
-        - Limpiar la mano al iniciar nueva ronda
-        - Proporcionar información sobre la mano (valor, cantidad de cartas)
+        - Ajustar automáticamente el valor de los Ases de 11 a 1 para evitar BUST
+        - Limpiar la mano y las colas visuales al iniciar nueva ronda
+        - Proporcionar información sobre la mano (valor, cantidad de cartas, vector de cartas)
+        - Definir método abstracto para identificar tipo de mano
 
     Colaboradores:
         - Carta (almacena un vector de cartas)
-        - Vista (notifica para mostrar las cartas recibidas)
+        - Vista (notifica para añadir cartas a cola y limpiar colas)
         - Jugador (subclase que hereda funcionalidad)
         - Crupier (subclase que hereda funcionalidad)
 
-    @details Clase abstracta que define el comportamiento común entre el jugador y el 
-             crupier. Implementa la lógica fundamental del manejo de cartas en Blackjack, 
-             incluyendo el ajuste automático de Ases cuando el valor de la mano supera 21.
+    @details Superclase abstracta que define el comportamiento común entre el jugador y el 
+             crupier. Implementa la lógica fundamental del manejo de cartas en Blackjack 
+             incluyendo el ajuste automático de Ases cuando el valor de la mano supera 21
+             Al recibir una carta, la añade a la mano, ajusta Ases si es necesario y notifica 
+             a la Vista. Mantiene referencia a Vista para coordinación visual
     
     Autores:
     Lesly Zapata
@@ -38,7 +41,7 @@
     juan.encarnacion@correounivalle.edu.co
     juan.esteban.mina@correounivalle.edu.co
 
-    @date Fecha: Noviembre 2025
+    @date Fecha: Diciembre 2025
 */
 
 #pragma once

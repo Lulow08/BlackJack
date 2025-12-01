@@ -1,5 +1,5 @@
 /*
-    Proyecto: BlackJack (Tercera entrega)
+    Proyecto: BlackJack
     Curso: Fundamentos de Programación Orientada a Objetos (FPOO)
     Universidad del Valle
     Información CRC:
@@ -8,20 +8,23 @@
 
     Responsabilidades:
         - Gestionar el flujo de una ronda de Blackjack
-        - Repartir cartas iniciales al jugador y a sí mismo
         - Obtener cartas del mazo y distribuirlas
         - Ejecutar su turno siguiendo las reglas (pedir carta con menos de 17)
-        - Iniciar nuevas rondas limpiando las manos anteriores
+        - Evaluar el estado del juego (BUST, BLACKJACK, GANAR, PERDER, EMPATE)
+        - Decidir el resultado final después de jugar su turno
+        - Calcular el valor parcial de su mano (solo primera carta visible)
 
     Colaboradores:
-        - Participante (hereda de esta clase base)
+        - Participante (hereda funcionalidad base de manejo de mano)
         - Mazo (obtiene cartas del mazo)
-        - Jugador (reparte cartas al jugador)
-        - Vista (para mostrar sus cartas)
+        - Jugador (reparte cartas al jugador y compara valores de mano)
+        - Vista (muestra sus cartas)
 
-    @details Hereda de Participante e implementa la lógica específica del crupier en el 
-             juego de Blackjack. Es responsable de administrar el mazo, repartir cartas y ejecutar 
-             las reglas automáticas del crupier (debe pedir carta si tiene menos de 17 puntos).
+    @details Hereda de Participante e implementa la lógica específica del crupier en 
+             Blackjack. Administra el mazo y reparte cartas a ambos participantes. Ejecuta 
+             las reglas automáticas del crupier (debe pedir carta con menos de 17). Evalúa 
+             el estado del juego en tiempo real y decide el resultado final comparando valores 
+             de mano. Mantiene referencia al jugador para coordinación del juego
     
     Autores:
     Lesly Zapata
@@ -37,7 +40,7 @@
     juan.encarnacion@correounivalle.edu.co
     juan.esteban.mina@correounivalle.edu.co
 
-    @date Fecha: Noviembre 2025
+    @date Fecha: Diciembre 2024
 */
 
 #pragma once

@@ -1,24 +1,28 @@
 /*
-    Proyecto: BlackJack (Tercera entrega)
+    Proyecto: BlackJack
     Curso: Fundamentos de Programación Orientada a Objetos (FPOO)
     Universidad del Valle
     Información CRC:
    
     Clase: Apuesta
-    
+
     Responsabilidades:
         - Gestionar el dinero total del jugador
         - Controlar la apuesta actual en cada partida
-        - Permitir aumentar o reducir apuestas dentro de los límites del dinero disponible
-        - Actualizar el dinero según el resultado de la partida (ganar, perder, empatar)
-        - Resetear la apuesta después de cada ronda
+        - Validar que las apuestas no excedan el dinero disponible
+        - Actualizar el dinero según el resultado (ganar duplica la apuesta, perder la pierde, empatar la devuelve)
+        - Resetear el dinero total y apuesta al estado inicial
+        - Permitir modificar el dinero total manualmente
 
     Colaboradores:
-        - Jugador (para gestionar las finanzas del jugador)
+        - Jugador (gestiona las finanzas del jugador)
+        - Vista (muestra información de dinero y apuesta)
+        - Controlador (coordina las acciones de apuesta)
 
-    @details Maneja el sistema de apuestas del juego de Blackjack. Controla el flujo de 
-             dinero del jugador, validando que las apuestas no excedan el dinero disponible y 
-             aplicando las recompensas o pérdidas según el resultado de cada partida.
+    @details Maneja el sistema económico del juego de Blackjack. Permite aumentar apuestas
+             validando que no excedan el dinero disponible. Aplica las reglas de pago del Blackjack
+             ganar duplica la apuesta, perder la pierde completamente y empatar la devuelve.
+             Incluye funcionalidad para resetear a valores iniciales y modificar el dinero directamente
     
     Autores:
     Lesly Zapata
@@ -34,7 +38,7 @@
     juan.encarnacion@correounivalle.edu.co
     juan.esteban.mina@correounivalle.edu.co
 
-    @date Fecha: Noviembre 2025
+    @date Fecha: Diciembre 2025
 */
 
 #pragma once

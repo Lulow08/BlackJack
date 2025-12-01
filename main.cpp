@@ -1,4 +1,24 @@
-// REPOSITORIO: https://github.com/Lulow08/BlackJack.git
+/*
+     ▄▄▄▄  ▄▄▄▄▄                                   ▄▄▄  ▄▄▄▀▀█   
+   ▄▀    ▀▀     ▀▀▄▄▄▀▀▀▄           ▄▀▀▄▄▄▀▀▄   ▄▀▀   ▀▀   ▄ █   
+  █  ▄███▄ ▄███  ▄   ▄▄ █▄▄▄▄   ▄▄▄▄█ ▄   ▄▄ ▀▄█  ▄███  ███▀ █   
+ █  █▀  ███▀ ███  █▄█▀      █▄▄▀       █▄█▀      █▀  ██████ ▄▀   
+ █ █     ██   ███  ██   ███     ▄███ █  ██   █  █     ██ ██ █    
+ ▀▄ █  ▄ ██   ▄▀   ██  ██  ██▀ ██   ██  ██   ██▄ █  ▄ ██ ██ █    
+  ▀▄ ▀▀  █▀▄█████  ██ ██   ██ ██    █   ██  █▀▀   ▀▀  ██ ██ █    
+   ▀█▄  █     ▀███ ██ ██   ██ ██        ██▄▀██        ██ ██ █▄▄▄ 
+    █  █▄       ██ ██  ▀█▄▄███ █▄   █  ▄██▀  ██       ██ ██    █ 
+   ▄▀ ▀▀███     █ ▄██▄▀ ▀▀  █   ████  ███   ▄███  ▄██  ▀  █ ██ █ 
+  ▄█▄▄▄  ▀███▄▄▀    ▀▀    ▄   █     ▄▄  ▀██   █▀ █▀▀██   ▄▀ ██ █ 
+       ▀▄▄     ▄▄▀▀▀▄▄█▀▀▀ ▀▀▀ ▀▀▀▀▀  ▀▄▄   █▄   █   ████▀    ▄▀ 
+          ▀▀▀▀▀                          ▀▀▀  ▀▀▄ ▀       ▄▀▀▀   
+                                                ▀▄▄▄█▀▀▀▀▀  TM
+    Proyecto: BlackJack
+    Curso: Fundamentos de Programación Orientada a Objetos (FPOO)
+    Universidad del Valle
+    
+    Repositorio: https://github.com/Lulow08/BlackJack.git
+*/
 
 #include "Vista.h"
 #include "Controlador.h"
@@ -10,6 +30,8 @@
 
 #include <iostream>
 
+// Lógica de juego
+
 bool empezarRonda(Vista& vista, const Controlador& controlador, Jugador& jugador,
                   Crupier& crupier, Apuesta& apuesta, const std::string& nombre, Serializador& serializador) {
 
@@ -18,6 +40,7 @@ bool empezarRonda(Vista& vista, const Controlador& controlador, Jugador& jugador
 
     bool empezarNuevaRonda{};
 
+    // Bucle de partida no finalizada
     while(estado == NONE) {
         vista.mostrarPantallaJuego(nombre, apuesta.getDineroTotal(), apuesta.getApuestaActual(),
                                 std::to_string(jugador.getValorDeMano()), std::to_string(crupier.getValorDeManoParcial()),
@@ -25,7 +48,7 @@ bool empezarRonda(Vista& vista, const Controlador& controlador, Jugador& jugador
 
         char opcionAccion = controlador.getOpcionChar("TP", JUEGO);
 
-        // Menu de acciones
+        // Menu de acciones in game
         switch (opcionAccion) {
         case 'T':
             crupier.darCartaAJugador(1);
@@ -36,7 +59,7 @@ bool empezarRonda(Vista& vista, const Controlador& controlador, Jugador& jugador
             estado = crupier.decidirResultado();
             break;
         }
-    }
+    } // Fin de partida
 
     // Mostrar resultado del juego
     vista.mostrarPantallaJuego(nombre, apuesta.getDineroTotal(), apuesta.getApuestaActual(),
@@ -48,6 +71,7 @@ bool empezarRonda(Vista& vista, const Controlador& controlador, Jugador& jugador
     if(estado == PERDER || estado == BUST) apuesta.perder();
     if(estado == EMPATE) apuesta.empatar();
 
+    // Menu para continuar o salir
     char opcionFinal = controlador.getOpcionChar("SN", JUEGO);
 
     switch (opcionFinal) {
@@ -56,6 +80,7 @@ bool empezarRonda(Vista& vista, const Controlador& controlador, Jugador& jugador
         break;
     
     case 'N':
+        // Menu de guardado
         vista.mostrarMenuGuardado();
             char opcionGuardado = controlador.getOpcionChar("SN", GUARDADO);
 
@@ -66,7 +91,6 @@ bool empezarRonda(Vista& vista, const Controlador& controlador, Jugador& jugador
                 case 'N':
                         break;
             }
-
         apuesta.resetearApuesta();
         jugador.setNombre("");
         empezarNuevaRonda = false;
@@ -110,6 +134,7 @@ bool prepararNuevaPartida(Vista& vista, const Controlador& controlador, Jugador&
         
         char opcionApuesta = controlador.getOpcionChar("WQCVB", APUESTA);
         switch (opcionApuesta) {
+            // Listo
             case 'W':
                 if(apuesta.getApuestaActual() == 0) {
                     apuestaExitosa = false;
@@ -119,6 +144,7 @@ bool prepararNuevaPartida(Vista& vista, const Controlador& controlador, Jugador&
                 apuestaExitosa = true;
                 break;
             
+            // Apostar 100
             case 'C':
                 if(!apuesta.aumentarApuesta(100))
                 dineroInsuficiente = true;
@@ -129,6 +155,7 @@ bool prepararNuevaPartida(Vista& vista, const Controlador& controlador, Jugador&
                 }
                 break;
 
+            // Apostar 250
             case 'V':
                 if(!apuesta.aumentarApuesta(250))
                 dineroInsuficiente = true;
@@ -139,6 +166,7 @@ bool prepararNuevaPartida(Vista& vista, const Controlador& controlador, Jugador&
                 }
                 break;
 
+            // Apostar 500
             case 'B':
                 if(!apuesta.aumentarApuesta(500))
                 dineroInsuficiente = true;
@@ -149,6 +177,7 @@ bool prepararNuevaPartida(Vista& vista, const Controlador& controlador, Jugador&
                 }
                 break;
 
+            // Cancelar / Salir
             case 'Q':
                 apuesta.resetearApuesta();
                 jugador.setNombre("");

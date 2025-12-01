@@ -1,5 +1,5 @@
 /*
-    Proyecto: BlackJack (Tercera entrega)
+    Proyecto: BlackJack
     Curso: Fundamentos de Programación Orientada a Objetos (FPOO)
     Universidad del Valle
     Información CRC:
@@ -8,20 +8,21 @@
 
     Responsabilidades:
         - Generar un mazo completo de 52 cartas (4 palos × 13 valores)
-        - Asignar colores correctos a cada palo (rojo/negro)
-        - Barajar las cartas aleatoriamente al inicio
-        - Mantener un índice de la carta actual
+        - Asignar colores correctos a cada palo (corazones y diamantes rojos, tréboles y picas negros)
+        - Barajar las cartas aleatoriamente usando semilla basada en tiempo del sistema
+        - Mantener un índice de la carta actual a repartir
         - Proporcionar información sobre cartas restantes
-        - Permitir avanzar el índice para repartir cartas
-        
+        - Permitir avanzar el índice para repartir cartas secuencialmente
+
     Colaboradores:
-        - Carta (crea y almacena objetos Carta)
+        - Carta (crea y almacena 52 objetos Carta)
         - Crupier (proporciona cartas al crupier para repartir)
 
     @details Maneja un conjunto de 52 objetos Carta que representan un mazo estándar de 
-             póker. Genera las cartas en orden y luego las baraja usando algoritmos de 
-             aleatorización basados en el tiempo del sistema. Mantiene el control de qué carta 
-             se debe repartir a continuación.
+             póker. Genera las cartas en orden (2-10, J, Q, K, As para cada palo) y luego 
+             las baraja usando std::shuffle con semilla temporal. Mantiene un índice que 
+             apunta a la siguiente carta a repartir. El vector de cartas es público para 
+             permitir acceso directo desde el Crupier
     
     Autores:
     Lesly Zapata
@@ -37,7 +38,7 @@
     juan.encarnacion@correounivalle.edu.co
     juan.esteban.mina@correounivalle.edu.co
 
-    @date Fecha: Noviembre 2025
+    @date Fecha: Diciembre 2025
 */
 
 #pragma once
