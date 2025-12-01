@@ -53,7 +53,7 @@ class Carta {
 
         //Geters
 
-        int getValor() const { return valorNominal; }
+        int getValor() const;
         std::string getPalo() const { return palo; }
         Color getColor() const { return color; }
         bool getEstado() const { return cambioAUno; }

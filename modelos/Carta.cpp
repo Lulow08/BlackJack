@@ -10,6 +10,16 @@ void Carta::convertirAsAUno() {
     }
 }
 
+int Carta::getValor() const {
+    if (valorNominal > 11) {
+        return 10;
+    }
+
+    else {
+        return valorNominal;
+    }
+}
+
 std::string Carta::getValorASCII() const {
     std::string valorASCII;
 
