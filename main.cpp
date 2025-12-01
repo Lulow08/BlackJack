@@ -224,6 +224,8 @@ int main() {
             }
                 break;
             case 3:
+                vista.mostrarReglas();
+                std::cin.get();
                 break;
             case 4:
                 return 0;

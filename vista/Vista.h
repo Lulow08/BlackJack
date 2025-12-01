@@ -62,6 +62,7 @@ class Vista {
         void mostrarMenuGuardado() const;
         void mostrarGameData(const std::string& nombre, int dinero, int apuesta) const;
         void mostrarEstado(GameState estado) const;
+        void mostrarReglas() const;
 
         // Pantallas
         void mostrarPantallaPrincipal() const;
