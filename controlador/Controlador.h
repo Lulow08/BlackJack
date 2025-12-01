@@ -44,13 +44,14 @@
 
 #include "Vista.h"
 #include "Jugador.h"
+#include "Crupier.h"
 #include "Apuesta.h"
 
 enum Menu { APUESTA, JUEGO };
 
 class Controlador {
     public:
-        Controlador(Vista& pVista, Jugador& pJugador, Apuesta& pApuesta);
+        Controlador(Vista& pVista, Jugador& pJugador, Crupier& pCrupier, Apuesta& pApuesta);
 
         int getOpcionInt(int opcionMin, int opcionMax) const;
         char getOpcionChar(const std::string& opciones, Menu menu) const;
@@ -62,5 +63,6 @@ class Controlador {
     private:
         Vista& vista;
         Jugador& jugador;
+        Crupier& crupier;
         Apuesta& apuesta;
 };

@@ -94,7 +94,7 @@ class Vista {
         const std::string colReset = "\e[0m";
 
         const std::string sangria = "          ";
-        const std::string sangriaCartas = "                  ";
+        const std::string sangriaCartas = "                     ";
 
         enum { SUPERIOR, MEDIO, INFERIOR }; // Para mayor claridad con los índices array
         std::vector<std::string> colaCartasJugador[3];

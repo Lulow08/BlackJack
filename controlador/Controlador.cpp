@@ -5,7 +5,7 @@
 #include <cctype>
 #include <limits>
 
-Controlador::Controlador(Vista& pVista, Jugador& pJugador, Apuesta& pApuesta) : vista{pVista}, jugador{pJugador}, apuesta{pApuesta} {}
+Controlador::Controlador(Vista& pVista, Jugador& pJugador, Crupier& pCrupier, Apuesta& pApuesta) : vista{pVista}, jugador{pJugador}, crupier{pCrupier}, apuesta{pApuesta} {}
 
 int Controlador::getOpcionInt(int opcionMin, int opcionMax) const {
     int opcion{};
@@ -50,7 +50,9 @@ char Controlador::getOpcionChar(const std::string& opciones, Menu menu) const {
         vista.mostrarPantallaApuesta(jugador.getNombre(), apuesta.getDineroTotal(), apuesta.getApuestaActual());
 
         if(menu == JUEGO)
-        vista.mostrarPantallaPrincipal();
+        vista.mostrarPantallaJuego(jugador.getNombre(), apuesta.getDineroTotal(), apuesta.getApuestaActual(),
+                                   std::to_string(jugador.getValorDeMano()), std::to_string(crupier.getValorDeMano()),
+                                   NONE);
 
         vista.mostrarTexto("Invalido", "\e[1;31m");
     }
