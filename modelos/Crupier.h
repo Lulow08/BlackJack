@@ -51,6 +51,8 @@ class Crupier : public Participante {
 
         void empezarNuevaRonda();
 
+        int getValorDeManoParcial() const;
+
         Carta getSiguienteCarta();
         void darCartaAJugador(int cantidad);
         void darCartaACrupier(int cantidad);

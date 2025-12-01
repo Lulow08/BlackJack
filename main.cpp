@@ -17,7 +17,7 @@ bool empezarRonda(Vista& vista, const Controlador& controlador, Jugador& jugador
 
     while(estado == NONE) {
         vista.mostrarPantallaJuego(nombre, apuesta.getDineroTotal(), apuesta.getApuestaActual(),
-                                std::to_string(jugador.getValorDeMano()), std::to_string(crupier.getValorDeMano()),
+                                std::to_string(jugador.getValorDeMano()), std::to_string(crupier.getValorDeManoParcial()),
                                 estado);
 
         char opcionAccion = controlador.getOpcionChar("TP", JUEGO);

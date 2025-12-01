@@ -12,6 +12,10 @@ void Crupier::empezarNuevaRonda() {
     darCartaACrupier(2);
 }
 
+int Crupier::getValorDeManoParcial() const {
+    return mano[0].getValor();
+}
+
 Carta Crupier::getSiguienteCarta() {
     mazo.avanzarIndice();
     return mazo.cartasEnMazo[mazo.getIndiceCartaActual()];
