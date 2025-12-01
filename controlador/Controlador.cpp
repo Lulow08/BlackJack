@@ -15,18 +15,19 @@ int Controlador::getOpcionInt(int opcionMin, int opcionMax) const {
 
         if(std::cin >> opcion) {
 
-            if(opcion >= opcionMin && opcion <= opcionMax)
-            limpiarBuffer();
-            return opcion;
+            if(opcion >= opcionMin && opcion <= opcionMax){
+                limpiarBuffer();
+                return opcion;
+            }
         }
 
         if(std::cin.fail()) {
             std::cin.clear(); // Limpiar la bandera de error (fallbit) que se presenta en caso de error
             limpiarBuffer();
-
-            vista.mostrarPantallaPrincipal();
-            vista.mostrarTexto("Invalido", "\e[1;31m");
         }
+
+        vista.mostrarPantallaPrincipal();
+        vista.mostrarTexto("Invalido", "\e[1;31m");
     }
 }
 
