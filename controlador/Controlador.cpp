@@ -54,6 +54,9 @@ char Controlador::getOpcionChar(const std::string& opciones, Menu menu) const {
                                    std::to_string(jugador.getValorDeMano()), std::to_string(crupier.getValorDeMano()),
                                    NONE);
 
+        if(menu == GUARDADO)
+        vista.mostrarMenuGuardado();
+
         vista.mostrarTexto("Invalido", "\e[1;31m");
     }
 }

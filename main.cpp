@@ -10,7 +10,9 @@
 
 #include <iostream>
 
-bool empezarRonda(Vista& vista, const Controlador& controlador, Jugador& jugador, Crupier& crupier, Apuesta& apuesta, const std::string& nombre) {
+bool empezarRonda(Vista& vista, const Controlador& controlador, Jugador& jugador,
+                  Crupier& crupier, Apuesta& apuesta, const std::string& nombre, Serializador& serializador) {
+
     crupier.empezarNuevaRonda();
     GameState estado = crupier.evaluarEstado();
 
@@ -54,7 +56,17 @@ bool empezarRonda(Vista& vista, const Controlador& controlador, Jugador& jugador
         break;
     
     case 'N':
-        // Solicitar Guardar partida (cuando se añada)
+        vista.mostrarMenuGuardado();
+            char opcionGuardado = controlador.getOpcionChar("SN", GUARDADO);
+
+            switch (opcionGuardado) {
+                case 'S':
+                    serializador.guardarPartida(jugador, apuesta);
+                    break;
+                case 'N':
+                        break;
+            }
+
         apuesta.resetearApuesta();
         jugador.setNombre("");
         empezarNuevaRonda = false;
@@ -64,7 +76,9 @@ bool empezarRonda(Vista& vista, const Controlador& controlador, Jugador& jugador
     return empezarNuevaRonda;
 }
 
-bool prepararNuevaPartida(Vista& vista, const Controlador& controlador, Jugador& jugador, Crupier& crupier, Apuesta& apuesta) {
+bool prepararNuevaPartida(Vista& vista, const Controlador& controlador, Jugador& jugador,
+                          Crupier& crupier, Apuesta& apuesta, Serializador& serializador) {
+
     vista.limpiarPantalla();
     vista.mostrarTitulo();
 
@@ -142,13 +156,37 @@ bool prepararNuevaPartida(Vista& vista, const Controlador& controlador, Jugador&
                 apuestaExitosa = false;
 
                 if(preguntarPorGuardado) {
-                    // Solicitar Guardar partida (cuando se añada)
+                    vista.mostrarMenuGuardado();
+                    char opcionGuardado = controlador.getOpcionChar("SN", GUARDADO);
+
+                    switch (opcionGuardado) {
+                    case 'S':
+                        serializador.guardarPartida(jugador, apuesta);
+                        break;
+                    
+                    case 'N':
+                        break;
+                    }
                 }
                 break;
         }
     } while (!salirDeApuesta);
 
     return apuestaExitosa;
+}
+
+void cicloJuego(Vista& vista, const Controlador& controlador, Jugador& jugador,
+                Crupier& crupier, Apuesta& apuesta, Serializador& serializador) {
+
+    bool jugando = true;
+    while(jugando) {
+        if(prepararNuevaPartida(vista, controlador, jugador, crupier, apuesta, serializador)){
+            jugando = empezarRonda(vista, controlador, jugador, crupier, apuesta, jugador.getNombre(), serializador);
+        }
+        else {
+            jugando = false;
+        }
+    }
 }
 
 int main() {
@@ -168,17 +206,9 @@ int main() {
 
         switch (opcion) {
             // Empezar nueva partida
-            case 1: {
-                bool jugando = true;
-                while(jugando) {
-                    if(prepararNuevaPartida(vista, controlador, jugador, crupier, apuesta)){
-                        jugando = empezarRonda(vista, controlador, jugador, crupier, apuesta, jugador.getNombre());
-                    }
-                    else {
-                        jugando = false;
-                    }
-                }
-            } break;
+            case 1:
+                cicloJuego(vista, controlador, jugador, crupier, apuesta, serializador);
+                break;
             // Cargar partida anterior
             case 2: {
                 std::pair<std::string, int> datosGuardados = serializador.deserializarDatos();
@@ -188,10 +218,10 @@ int main() {
                 if (!nombre.empty() && dinero > 0) {
                     jugador.setNombre(nombre);
                     apuesta.setDineroTotal(dinero);
-
+                    
                     // Texto carga exitosa
-        
-                    std::cin.get();
+
+                    cicloJuego(vista, controlador, jugador, crupier, apuesta, serializador);
                 }
             }
                 break;

@@ -47,7 +47,7 @@
 #include "Crupier.h"
 #include "Apuesta.h"
 
-enum Menu { APUESTA, JUEGO };
+enum Menu { APUESTA, JUEGO, GUARDADO };
 
 class Controlador {
     public:

@@ -54,12 +54,17 @@ void Vista::mostrarMenuAcciones(GameState estado) const {
     if(estado != NONE) {
         std::cout << "\n"; mostrarTexto("Desea jugar de nuevo? [S/N]\n", colNegro);
     }
-
     else {
         std::cout << "\n"; mostrarTexto("Tomar [T] | Plantarse [P]\n", colNegro);
-    }
+    } 
+}
 
-    
+void Vista::mostrarMenuGuardado() const {
+    limpiarPantalla();
+    std::cout << "\n\n\n\n\n";
+    std::cout << sangriaCartas; mostrarTexto("Desea guardar la partida?");
+    std::cout << sangriaCartas; mostrarTexto("          [S/N]          ", colNegro);
+    std::cout << "\n\n";
 }
 
 void Vista::mostrarGameData(const std::string& nombre, int dinero, int apuesta) const {
