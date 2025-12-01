@@ -55,6 +55,10 @@ class Apuesta {
         int getDineroTotal() const { return dineroTotal; }
         int getApuestaActual() const { return apuestaActual; }
 
+        // Setter
+
+        void setDineroTotal(int cantidad);
+
     private:
         int dineroInicial;
         int dineroTotal;

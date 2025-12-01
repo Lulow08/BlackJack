@@ -36,3 +36,7 @@ void Apuesta::empatar() {
     dineroTotal += apuestaActual;
     apuestaActual = 0;
 }
+
+void Apuesta::setDineroTotal(int cantidad) {
+    dineroTotal = cantidad;
+}

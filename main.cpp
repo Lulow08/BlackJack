@@ -187,7 +187,7 @@ int main() {
 
                 if (!nombre.empty() && dinero > 0) {
                     jugador.setNombre(nombre);
-                    //apuesta.setDineroTotal(dinero);
+                    apuesta.setDineroTotal(dinero);
 
                     // Texto carga exitosa
         
