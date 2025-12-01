@@ -68,11 +68,13 @@ bool prepararNuevaPartida(Vista& vista, const Controlador& controlador, Jugador&
     vista.mostrarTitulo();
 
     std::string nombre{};
+    bool preguntarPorGuardado = true;
 
     // Sección donde se solicita el nombre al jugador (Si no lo ha hecho antes)
     if(jugador.getNombre() == "") {
         std::string nombre = controlador.getNombreJugador(3, 8);
         jugador.setNombre(nombre);
+        preguntarPorGuardado = false;
     }
 
     nombre = jugador.getNombre();
@@ -105,19 +107,31 @@ bool prepararNuevaPartida(Vista& vista, const Controlador& controlador, Jugador&
             case 'C':
                 if(!apuesta.aumentarApuesta(100))
                 dineroInsuficiente = true;
-                apuestaExitosa = true;
+
+                else {
+                    dineroInsuficiente = false;
+                    apuestaExitosa = true;
+                }
                 break;
 
             case 'V':
                 if(!apuesta.aumentarApuesta(250))
                 dineroInsuficiente = true;
-                apuestaExitosa = true;
+
+                else {
+                    dineroInsuficiente = false;
+                    apuestaExitosa = true;
+                }
                 break;
 
             case 'B':
                 if(!apuesta.aumentarApuesta(500))
                 dineroInsuficiente = true;
-                apuestaExitosa = true;
+                
+                else {
+                    dineroInsuficiente = false;
+                    apuestaExitosa = true;
+                }
                 break;
 
             case 'Q':
@@ -125,6 +139,10 @@ bool prepararNuevaPartida(Vista& vista, const Controlador& controlador, Jugador&
                 jugador.setNombre("");
                 salirDeApuesta = true;
                 apuestaExitosa = false;
+
+                if(preguntarPorGuardado) {
+                    // Solicitar Guardar partida (cuando se añada)
+                }
                 break;
         }
     } while (!salirDeApuesta);
