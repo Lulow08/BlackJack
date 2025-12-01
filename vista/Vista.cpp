@@ -58,8 +58,8 @@ void Vista::mostrarGameData(const std::string& nombre, int dinero, int apuesta) 
     std::cout << sangria;
 
     mostrarTexto("", nombre, "  ");
-    mostrarTexto(colCian, "Cash: $", std::to_string(dinero));
-    mostrarTexto(colAmarillo, "  Bet: $", std::to_string(apuesta));
+    mostrarTexto(colCian, "Dinero: $", std::to_string(dinero));
+    mostrarTexto(colAmarillo, "  Apuesta: $", std::to_string(apuesta));
 
     std::cout << colReset << "\n\n";
 }
@@ -179,7 +179,7 @@ void Vista::imprimirMano(Mano mano, const std::string& valor) {
     std::vector<std::string> (&cola)[3] = (mano == JUGADOR) ? colaCartasJugador : colaCartasCrupier;
 
     bool esDobleDigito = (valor.length() > 1);
-    const std::string valorConSangria = esDobleDigito ? "               " : "                ";
+    const std::string valorConSangria = esDobleDigito ? "                  " : "                   ";
     
     // Colas superiores
     std::cout << valorConSangria << valor << " "; imprimirCola(cola[SUPERIOR]);

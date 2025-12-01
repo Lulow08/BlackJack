@@ -8,18 +8,87 @@
 #include "Apuesta.h"
 #include <iostream>
 
-void empezarRonda(Vista& vista, const Controlador& controlador, Jugador& jugador, Apuesta& apuesta, const std::string& nombre) {
-    Mazo mazo;
-    Crupier crupier(mazo, vista);
 
+// TODO: mover logica de juego a controlador?
+GameState revisarEstadoInicial(Jugador& jugador, Crupier& crupier) {
+    if(crupier.getValorDeMano() > 21)
+    return GANAR;
+
+    else if(crupier.getValorDeMano() == 21)
+    return PERDER;
+
+    else if(jugador.getValorDeMano() > 21)
+    return BUST;
+
+    else if(jugador.getValorDeMano() == 21)
+    return BLACKJACK;
+
+    else if(jugador.getValorDeMano() == crupier.getValorDeMano())
+    return EMPATE; // Revisar si aplica, o solo para blackjack
+
+    else
+    return NONE;
+}
+
+GameState revisarEstadoPlantarse(Jugador& jugador, Crupier& crupier) {
+    if(crupier.getValorDeMano() > 21)
+    return GANAR;
+
+    else if(jugador.getValorDeMano() > crupier.getValorDeMano())
+    return GANAR;
+
+    else if(jugador.getValorDeMano() < crupier.getValorDeMano())
+    return PERDER;
+
+    else if(crupier.getValorDeMano() == 21)
+    return PERDER;
+
+    else if(jugador.getValorDeMano() == crupier.getValorDeMano())
+    return EMPATE;
+
+    else
+    return NONE;
+}
+
+GameState revisarEstadoTomar(Jugador& jugador, Crupier& crupier) {
+    if(jugador.getValorDeMano() > 21)
+    return BUST;
+
+    else if(jugador.getValorDeMano() == 21)
+    return BLACKJACK;
+
+    else if(jugador.getValorDeMano() < 21)
+    return NONE;
+
+    else
+    return NONE;
+}
+
+void empezarRonda(Vista& vista, const Controlador& controlador, Jugador& jugador, Crupier& crupier, Apuesta& apuesta, const std::string& nombre) {
     crupier.empezarNuevaRonda(jugador);
     vista.mostrarPantallaJuego(nombre, apuesta.getDineroTotal(), apuesta.getApuestaActual(),
                                std::to_string(jugador.getValorDeMano()), std::to_string(crupier.getValorDeMano()),
-                               NONE);
-    std::cin.get();
+                               revisarEstadoInicial(jugador, crupier));
+    char opcionAccion = controlador.getOpcionChar("TP", JUEGO);
+    switch (opcionAccion) {
+    case 'T':
+        crupier.darCartaAJugador(jugador, 1);
+        vista.mostrarPantallaJuego(nombre, apuesta.getDineroTotal(), apuesta.getApuestaActual(),
+                               std::to_string(jugador.getValorDeMano()), std::to_string(crupier.getValorDeMano()),
+                               revisarEstadoTomar(jugador, crupier));
+        std::cin.get();
+        break;
+    
+    case 'P':
+        vista.mostrarPantallaJuego(nombre, apuesta.getDineroTotal(), apuesta.getApuestaActual(),
+                               std::to_string(jugador.getValorDeMano()), std::to_string(crupier.getValorDeMano()),
+                               revisarEstadoPlantarse(jugador, crupier));
+        std::cin.get();
+        break;
+    }
 }
 
-void prepararNuevaPartida(Vista& vista, const Controlador& controlador, Jugador& jugador, Apuesta& apuesta) {
+void prepararNuevaPartida(Vista& vista, const Controlador& controlador, Jugador& jugador, Crupier& crupier, Apuesta& apuesta) {
     vista.limpiarPantalla();
     vista.mostrarTitulo();
 
@@ -40,7 +109,7 @@ void prepararNuevaPartida(Vista& vista, const Controlador& controlador, Jugador&
         char opcionApuesta = controlador.getOpcionChar("WQCVB", APUESTA);
         switch (opcionApuesta) {
             case 'W':
-                empezarRonda(vista, controlador, jugador, apuesta, nombre);
+                empezarRonda(vista, controlador, jugador, crupier, apuesta, nombre);
                 salirDeApuesta = true;
                 break;
             
@@ -69,10 +138,12 @@ void prepararNuevaPartida(Vista& vista, const Controlador& controlador, Jugador&
 
 int main() {
     Vista vista;
+    Mazo mazo;
 
     Jugador jugador(vista);
-    Apuesta apuesta; // Se crea aqui porque el contructor de controlador la requiere
-    Controlador controlador(vista, jugador, apuesta);
+    Crupier crupier(mazo, vista);
+    Apuesta apuesta;
+    Controlador controlador(vista, jugador, crupier, apuesta);
 
     while (true) {
         // Menu principal
@@ -81,7 +152,7 @@ int main() {
 
         switch (opcion) {
             case 1:
-                prepararNuevaPartida(vista, controlador,  jugador, apuesta);
+                prepararNuevaPartida(vista, controlador, jugador, crupier, apuesta);
                 break;
             case 2:
                 break;
