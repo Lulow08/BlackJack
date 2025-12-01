@@ -32,7 +32,7 @@ bool Apuesta::reducirApuesta(int cantidad) {
 }
 
 void Apuesta::resetearApuesta() {
-    dineroTotal += apuestaActual;
+    dineroTotal = dineroInicial;
     apuestaActual = 0;
 }
 

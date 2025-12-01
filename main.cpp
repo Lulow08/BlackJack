@@ -51,6 +51,7 @@ bool empezarRonda(Vista& vista, const Controlador& controlador, Jugador& jugador
     
     default:
         // Solicitar Guardar partida (cuando se añada)
+        apuesta.resetearApuesta();
         return false;
         break;
     }
@@ -142,7 +143,7 @@ int main() {
             // Empezar nueva partida
             case 1: {
                 jugador.setNombre(""); // Estar en el menu principal implica reiniciar el nombre
-                
+
                 bool jugando = true;
                 while(jugando) {
                     if(prepararNuevaPartida(vista, controlador, jugador, crupier, apuesta)){
