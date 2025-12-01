@@ -202,7 +202,7 @@ int main() {
     while (true) {
         // Menu principal
         vista.mostrarPantallaPrincipal();
-        int opcion = controlador.getOpcionInt(1, 5);
+        int opcion = controlador.getOpcionInt(1, 4);
 
         switch (opcion) {
             // Empezar nueva partida
@@ -226,8 +226,6 @@ int main() {
             case 3:
                 break;
             case 4:
-                break;
-            case 5:
                 return 0;
         }
     }

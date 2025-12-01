@@ -29,9 +29,8 @@ void Vista::mostrarMenuPrincipal() const {
     mostrarTexto("~~~~~~~~~~~~~~", colAmarillo);
     mostrarTexto("1. Empezar una nueva partida");
     mostrarTexto("2. Cargar partida anterior");
-    mostrarTexto("3. Estadisticas");
-    mostrarTexto("4. Como jugar");
-    mostrarTexto("5. Salir");
+    mostrarTexto("3. Como jugar");
+    mostrarTexto("4. Salir");
     std::cout << std::endl;
 }
 
