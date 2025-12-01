@@ -100,56 +100,51 @@ void Vista::mostrarEstado(GameState estado) const {
 
 void Vista::mostrarReglas() const {
     mostrarTitulo();
-    std::cout << colAmarillo << R"(
-                ♦ REGLAS BÁSICAS Y OBJETIVO ♦                      
- ╔═════════════════════════════════════════════════════════════════════╗
- ║                                                                     ║
- ║  [ OBJETIVO ]                                                       ║
- ║  Vencer al Crupier obteniendo una puntuación de mano lo más cercana ║
- ║  a 21, sin jamás superarla (pasarse) Si te pasas, haces BUST        ║
- ║                                                                     ║
- ║  [ VALOR DE LAS CARTAS ]                                            ║
- ║                                                                     ║
- ║  • CARTAS NUMÉRICAS (2-10): Valen su valor nominal                  ║
- ║  • FIGURAS (J, Q, K): Valen 10 puntos cada una                      ║
- ║  • AS (A): Puede valer 1 punto u 11 puntos                          ║
- ║    Elige el valor que más te convenga sin pasarte de 21             ║
- ║                                                                     ║
- ╠═════════════════════════════════════════════════════════════════════╣
- ║                       ♣ TU TURNO DE ACCIÓN ♣                        ║
- ╠═════════════════════════════════════════════════════════════════════╣
- ║                                                                     ║
- ║  [ T ] TOMAR CARTA (Hit)                                            ║
- ║  Pide una carta adicional para mejorar tu puntuación. Puedes tomar  ║
- ║  todas las cartas que quieras, pero cuidado con el BUST!            ║
- ║                                                                     ║
- ║  [ P ] PLANTARSE (Stand)                                            ║
- ║  Mantiene tu puntuación actual. Si te plantas, le cedes             ║
- ║  el turno al Crupier para que juegue su mano                        ║
- ║                                                                     ║
- ╠═════════════════════════════════════════════════════════════════════╣
- ║                      ♥ REGLAS DEL CRUPIER ♥                         ║
- ╠═════════════════════════════════════════════════════════════════════╣
- ║                                                                     ║
- ║  • El Crupier siempre juega después de ti                           ║
- ║  • Debe TOMAR cartas si su mano es de 16 o menos                    ║
- ║  • Debe PLANTARSE si su mano es de 17 o más                         ║
- ║  • Si el Crupier hace BUST (> 21), tú ganas.                        ║
- ║                                                                     ║
- ╠═════════════════════════════════════════════════════════════════════╣
- ║                    APUESTA & RESULTADO FINAL                        ║
- ╠═════════════════════════════════════════════════════════════════════╣
- ║                                                                     ║
- ║  • GANAS: Si tu puntuación final es mayor que la del Crupier        ║
- ║           (sin pasarte) - Pagas 1:1                                 ║
- ║                                                                     ║
- ║  • BLACKJACK: Obtener 21 exacto con tus cartas                      ║
- ║               Es la mejor mano - Pagas 3:2                          ║
- ║                                                                     ║
- ║  • EMPATE (Push): Misma puntuación que el Crupier. Recuperas tu     ║
- ║                   apuesta                                           ║
- ║                                                                     ║
- ╚═════════════════════════════════════════════════════════════════════╝)"
+    std::cout << colAmarillo <<
+R"(                      Reglas - Black Jack 21                
+  ┌────────────────────────────────────────────────────────────┐
+  │                                                            │
+  │ Objetivo ┌   Vencer al Crupier (maquina) haciendo que   ┐  │
+  │          │     la suma de los valores de tus cartas     │  │
+  │          │     sea lo mas cercano a 21 sin pasarse.     │  │
+  │          │      pasarse es lo mismo que hacer BUST      │  │
+  │          └          y pierdes automaticamente           ┘  │
+  │                                                            │
+  ├────────────────────────────────────────────────────────────┤
+  │                                                            │
+  │ Cartas   [  Normales(2-10) Figuras(J,Q,K)(10) As(11/1)  ]  │
+  │                                                            │
+  ├────────────────────────────────────────────────────────────┤
+  │                                                            │
+  │ Acciones ┌  [T]omar: Añades una carta a tu mano para   ┐   │
+  │          │           aumentar tu puntación             │   │
+  │          │                                             │   │
+  │          │  [P]lantarse: Mantienes tu puntuación       │   │
+  │          │               actual. Se decide quien gana  │   │
+  │          └                                             ┘   │
+  │                                                            │
+  ├────────────────────────────────────────────────────────────┤
+  │                                                            │
+  │ Crupier  ┌  • Juega después de ti                      ┐   │
+  │          │  • Debe tomar hasta que su mano valga +16   │   │
+  │          └  • Tiene mismo objetivo y reglas que tu     ┘   │
+  │                                                            │
+  ├─────────────────────────────┬──────────────────────────────┤
+  │                             │                              │
+  │    • TP - tu puntuación     │  • PC - puntuación crupier   │
+  │                             │                              │
+  ├─────────────────────────────┴──────────────────────────────┤
+  │                                                            │
+  │ Ganas    ┌            TP > PC o BlackJack             ┐    │
+  │ Pierdes  │              TP < OC o BUST                │    │
+  │ Empate   │                 TP = PC                    │    │
+  │ BlckJck  └                 TP = 21                    ┘    │
+  │                                                            │
+  ├────────────────────────────────────────────────────────────┤
+  │                                                            │
+  │ Presiona cualquier tecla para salir...                     │
+  │                                                            │
+  └────────────────────────────────────────────────────────────┘)"
     << colReset << std::endl;
 }
 
