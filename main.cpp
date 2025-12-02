@@ -246,11 +246,15 @@ int main() {
                 std::string nombre = datosGuardados.first;
                 int dinero = datosGuardados.second;
 
-                if (!nombre.empty() && dinero > 0) {
-                    jugador.setNombre(nombre);
-                    apuesta.setDineroTotal(dinero);
-
-                    cicloJuego(vista, controlador, jugador, crupier, apuesta, serializador);
+                if (!nombre.empty()) {
+                    if (dinero > 0) {
+                        jugador.setNombre(nombre);
+                        apuesta.setDineroTotal(dinero);
+                        cicloJuego(vista, controlador, jugador, crupier, apuesta, serializador);
+                    }
+                    else {
+                        controlador.esperarInput("Partida sin fondos");
+                    }
                 }
             } break;
 
