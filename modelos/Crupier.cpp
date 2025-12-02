@@ -5,6 +5,7 @@ Crupier::Crupier(Mazo& pMazo, Vista& pVista, Jugador& pJugador) : Participante(p
 void Crupier::empezarNuevaRonda() {
     limpiarMano();
     jugador.limpiarMano();
+    mazo.generarMazo();
     
     // Repartir 2 cartas al jugador y 2 al crupier
 
