@@ -52,7 +52,7 @@ char Controlador::getOpcionChar(const std::string& opciones, Menu menu) const {
 
         if(menu == JUEGO)
         vista.mostrarPantallaJuego(jugador.getNombre(), apuesta.getDineroTotal(), apuesta.getApuestaActual(),
-                                   std::to_string(jugador.getValorDeMano()), std::to_string(crupier.getValorDeMano()),
+                                   std::to_string(jugador.getValorDeMano()), std::to_string(crupier.getValorDeManoParcial()),
                                    NONE);
 
         if(menu == GUARDADO)
