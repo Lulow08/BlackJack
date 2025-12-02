@@ -57,9 +57,9 @@ class Mazo {
         size_t getCartasRestantes() const;
 
         void avanzarIndice() { indiceCartaActual++; }
+        void generarMazo();
     
     private:
         size_t indiceCartaActual{};
-        void generarMazo();
         void barajar();
 };
