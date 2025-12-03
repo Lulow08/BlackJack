@@ -54,7 +54,7 @@ $ ./blackjack      # ejecuta el programa
 ```
 $ mkdir build                     # crea la carpeta build
 $ cd build                        # ingresa a la carpeta build
-$ cmake -G "MinGw Makefiles" ..   # genera toda la configuración
+$ cmake -G "MinGW Makefiles" ..   # genera toda la configuración
 $ cmake --build .                 # hace el build
 $ ./blackjack                     # ejecuta el programa
 ```
@@ -74,7 +74,7 @@ $ ctest
 
 ### Windows (con MinGW)
 ```
-$ cmake -G "MinGw Makefiles" -S . -B build
+$ cmake -G "MinGW Makefiles" -S . -B build
 $ cmake --build build
 $ cd build
 $ ctest
