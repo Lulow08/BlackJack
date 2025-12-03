@@ -1,25 +1,14 @@
-find_package(GTest REQUIRED)
-include_directories(${GTEST_INCLUDE_DIRS})
+file(GLOB TEST_SOURCES "*.cpp")
 
-set(TEST_FILES
-    test_carta.cpp
-    test_mazo.cpp
-    test_apuesta.cpp
-    test_participante.cpp
-    test_serializador.cpp
-    test_crupier.cpp
-)
+add_executable(test_runner ${TEST_SOURCES})
 
-add_executable(run_tests ${TEST_FILES})
-
-
-target_link_libraries(run_tests 
-    ${GTEST_LIBRARIES}
-    ${GTEST_MAIN_LIBRARIES}
-    pthread
+target_link_libraries(test_runner
     modelos
     controlador
     vista
+
+    GTest::gtest_main
 )
 
-add_test(NAME AllTests COMMAND run_tests)
+include(GoogleTest)
+gtest_discover_tests(test_runner)

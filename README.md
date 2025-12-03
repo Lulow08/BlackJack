@@ -41,18 +41,49 @@ o puedes descargar el [ZIP](https://github.com/Lulow08/BlackJack/archive/refs/he
 ### 2. Build y Compilación
 Puedes realizarlo facilmente con [CMake](https://cmake.org/) abriendo la carpeta principal del proyecto en tu IDE preferido,  ejecutar una terminal dentro de ella y poner:
 
+### Linux
 ```
 $ mkdir build      # crea la carpeta build
 $ cd build         # ingresa a la carpeta build
 $ cmake ..         # genera toda la configuración
-$ make
+$ make             # hace el build
 $ ./blackjack      # ejecuta el programa
 ```
 
+### Windows (con MinGW)
+```
+$ mkdir build                     # crea la carpeta build
+$ cd build                        # ingresa a la carpeta build
+$ cmake -G "MinGw Makefiles" ..   # genera toda la configuración
+$ cmake --build .                 # hace el build
+$ ./blackjack                     # ejecuta el programa
+```
+
+Asegurate de tener CMake, curl, git instalados y añadidos al PATH
+
+## 🦺 Tests
+Antes de hacerlos, asegurate de eliminar tu anterior carpeta build
+
+### Linux
+```
+$ cmake -S . -B build
+$ cmake --build build
+$ cd build
+$ ctest
+```
+
+### Windows (con MinGW)
+```
+$ cmake -G "MinGw Makefiles" -S . -B build
+$ cmake --build build
+$ cd build
+$ ctest
+```
+
 ## 📝 Notas
-* Requiere UNICODE para que el arte ASCII se vea correctamente
+* Usa UNICODE y ANSI para que el arte ASCII se vea lo mejor posible
 * Fuente de la terminal en el `showCase.gif`: fragment mono
-* El proyecto no requiere dependencias
+* El proyecto no requiere dependencias, solo las mencionadas para compilación y ejecución
 
 ## 👥 Integrantes
 * Yostin Ramirez - 2519674
