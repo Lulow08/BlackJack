@@ -1,4 +1,3 @@
-
 file(GLOB MODELOS_SOURCES "*.cpp")
 
 add_library(modelos ${MODELOS_SOURCES})
