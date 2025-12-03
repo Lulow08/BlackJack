@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmodelos.a CMakeFiles/modelos.dir/Apuesta.cpp.o CMakeFiles/modelos.dir/Carta.cpp.o CMakeFiles/modelos.dir/Crupier.cpp.o CMakeFiles/modelos.dir/Jugador.cpp.o CMakeFiles/modelos.dir/Mazo.cpp.o CMakeFiles/modelos.dir/Participante.cpp.o CMakeFiles/modelos.dir/Serializador.cpp.o
+/usr/bin/ranlib libmodelos.a

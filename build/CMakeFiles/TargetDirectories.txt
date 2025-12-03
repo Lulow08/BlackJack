@@ -1,0 +1,15 @@
+/workspaces/BlackJack/build/CMakeFiles/blackjack.dir
+/workspaces/BlackJack/build/CMakeFiles/edit_cache.dir
+/workspaces/BlackJack/build/CMakeFiles/rebuild_cache.dir
+/workspaces/BlackJack/build/controlador/CMakeFiles/controlador.dir
+/workspaces/BlackJack/build/controlador/CMakeFiles/edit_cache.dir
+/workspaces/BlackJack/build/controlador/CMakeFiles/rebuild_cache.dir
+/workspaces/BlackJack/build/modelos/CMakeFiles/modelos.dir
+/workspaces/BlackJack/build/modelos/CMakeFiles/edit_cache.dir
+/workspaces/BlackJack/build/modelos/CMakeFiles/rebuild_cache.dir
+/workspaces/BlackJack/build/vista/CMakeFiles/vista.dir
+/workspaces/BlackJack/build/vista/CMakeFiles/edit_cache.dir
+/workspaces/BlackJack/build/vista/CMakeFiles/rebuild_cache.dir
+/workspaces/BlackJack/build/tests/CMakeFiles/run_tests.dir
+/workspaces/BlackJack/build/tests/CMakeFiles/edit_cache.dir
+/workspaces/BlackJack/build/tests/CMakeFiles/rebuild_cache.dir

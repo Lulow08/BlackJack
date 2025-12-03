@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcontrolador.a CMakeFiles/controlador.dir/Controlador.cpp.o
+/usr/bin/ranlib libcontrolador.a
