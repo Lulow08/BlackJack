@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/blackjack.dir/main.cpp.o -o blackjack  modelos/libmodelos.a controlador/libcontrolador.a vista/libvista.a controlador/libcontrolador.a modelos/libmodelos.a 

@@ -1,4 +1,3 @@
-
 file(GLOB CONTROLADOR_SOURCES "*.cpp")
 
 add_library(controlador ${CONTROLADOR_SOURCES})

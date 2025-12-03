@@ -1,4 +1,3 @@
-
 file(GLOB VISTA_SOURCES "*.cpp")
 
 add_library(vista ${VISTA_SOURCES})

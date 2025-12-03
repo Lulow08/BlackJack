@@ -1,2 +1,0 @@
-/usr/bin/ar qc libvista.a CMakeFiles/vista.dir/Vista.cpp.o
-/usr/bin/ranlib libvista.a
