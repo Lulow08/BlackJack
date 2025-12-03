@@ -30,7 +30,13 @@
 
 #include <iostream>
 
-// Lógica de juego
+/*
+    Main instancia todos los objetos necesarios y usa sus métodos
+    para orquestar la totalidad del juego, desde sus menus, hasta su lógica
+    interna
+*/
+
+// Lógica de una ronda
 
 bool empezarRonda(Vista& vista, const Controlador& controlador, Jugador& jugador,
                   Crupier& crupier, Apuesta& apuesta, const std::string& nombre, Serializador& serializador) {
